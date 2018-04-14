@@ -2,6 +2,10 @@
 *.class
 out/
 
+
+# Remote DB
+DBConnection/ConfigsRemote*
+
 # Log file
 *.log
 
