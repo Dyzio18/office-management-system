@@ -1,11 +1,11 @@
 package DBConnection;
 
-public class ConfigRemote {
+public class ConfigsRemote {
 
-    protected String dbhost = "mysql12.mydevil.net";
-    protected String dbhost = "3306";
-    protected String dbuser = "m1295_mocnaekipa";
-    protected String dbpassword = "Systemy2018";
-    protected String dbname = "m1295_systemy_informatyczne_java";
+//    static protected String dbhost = "mysql12.mydevil.net";
+//    static protected String dbhost = "3306";
+//    static protected String dbuser = "m1295_mocnaekipa";
+//    static protected String dbpassword = "Systemy2018";
+//    static protected String dbname = "m1295_systemy_informatyczne_java";
 
 }
