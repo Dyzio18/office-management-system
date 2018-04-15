@@ -6,15 +6,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-
+public class Main extends Application
+{
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../Views/Login.fxml"));
-        primaryStage.setTitle("System zarządzania kancelarią");
-        primaryStage.setScene(new Scene(root, 400, 350));
-        primaryStage.show();
-        //primaryStage.setResizable(false);
+    public void start(Stage stage) throws Exception
+    {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Views/Login.fxml"));
+        Parent root = (Parent)loader.load();
+        stage.setTitle("System zarządzania kancelarią");
+        Scene scene = new Scene(root, 400, 350);
+        scene.getStylesheets().add("Styles/Theme.css");
+
+        stage.setScene(scene);
+        stage.show();
     }
 
 
