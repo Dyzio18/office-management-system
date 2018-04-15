@@ -1,0 +1,24 @@
+#loginGridPane
+{
+    -fx-background-color: #632A50;
+}
+
+#loginPane
+{
+    -fx-background-color: #632A50;
+}
+
+#loginButton
+{
+    -fx-border-width: 3px;
+    -fx-background-color: none;
+    -fx-border-color: #fff;
+    -fx-padding: 5px 20px 5px 20px;
+    -fx-text-fill: #fff;
+}
+
+#loginLabel
+{
+    -fx-text-alignment: center;
+    -fx-text-fill: #fff;
+}
