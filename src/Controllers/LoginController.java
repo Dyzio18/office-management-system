@@ -1,12 +1,17 @@
 package Controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +20,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import DBConnection.DBHandler;
+import javafx.stage.Stage;
 
 /**
  * TODO:
@@ -40,7 +46,6 @@ public class LoginController implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1){
 
         handler = new DBHandler();
-
         loginButton.setOnAction((event) -> {
             loginAction();
         });
@@ -48,7 +53,7 @@ public class LoginController implements Initializable{
 
 
     @FXML
-    public void loginAction() {
+    private void loginAction() {
 
         connection = handler.getConnection();
 
@@ -64,9 +69,23 @@ public class LoginController implements Initializable{
                 count++;
             }
             if(count==1){
-                System.out.println("Succes");
+                login.getScene().getWindow().hide();
+
+                Stage panel = new Stage();
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/Views/Panel.fxml"));
+                    Scene scene = new Scene(root);
+                    panel.setScene(scene);
+                    panel.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             } else {
-                System.out.println("Failure");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText("Błąd logowania");
+                alert.setContentText("Nie poprawny login lub hasło");
+                alert.show();
             }
 
         } catch (SQLException e) {

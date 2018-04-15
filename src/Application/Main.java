@@ -12,9 +12,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../Views/Login.fxml"));
         primaryStage.setTitle("System zarządzania kancelarią");
-        primaryStage.setScene(new Scene(root, 600, 475));
+        primaryStage.setScene(new Scene(root, 400, 350));
         primaryStage.show();
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
     }
 
 
