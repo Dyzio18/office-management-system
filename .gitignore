@@ -16,7 +16,6 @@ DBConnection/ConfigsRemote*
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 *.zip
@@ -58,9 +57,6 @@ cmake-build-release/
 
 # File-based project format
 *.iws
-
-# IntelliJ
-out/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
