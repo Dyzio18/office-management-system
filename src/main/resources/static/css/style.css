@@ -1,0 +1,32 @@
+/* CONTENT - user panel */
+.content{
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.aside{
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #efefef;
+}
+
+
+/* NAVBAR*/
+.logo__img{
+    max-height: 36px;
+    width: auto;
+}
+.logo__text {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+
+/* FOOTER */
+.footer{
+    background: #dcdcdc;
+}
+.list-group-item{
+    background-color: transparent !important;
+}
