@@ -9,6 +9,19 @@
     padding-top: 50px;
     padding-bottom: 50px;
     background: #efefef;
+    display: flex;
+    flex-direction: column;
+}
+.aside__currentUser{
+    position: relative;
+    top: 230px;
+}
+.aside > .list-group-flush > .list-group-item-action:hover {
+    background: #E0E0E0 !important;
+}
+.breadcrumb{
+    background: none !important;
+    padding: 0;
 }
 
 
