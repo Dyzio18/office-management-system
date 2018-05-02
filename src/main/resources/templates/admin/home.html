@@ -1,35 +1,49 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
 
-<head>
-<title>Admin Page</title>
-<link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<div lang="en" th:replace="layout/header"> </div>
 
-<body>
-	<div class="container">
-	
-		<form th:action="@{/logout}" method="get">
-			<button class="btn btn-md btn-danger btn-block" name="registration"
-				type="Submit">Logout</button>
-		</form>    
-		
-		<div class="panel-group" style="margin-top:40px">
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<span th:utext="${userName}"></span>
-				</div>
-				<div class="panel-body">
-					<img th:src="@{/images/beer.jpg}" class="img-responsive center-block" width="400" height="400" alt="Beer" /> 
-				</div>
+<div class="container-fluid " >
+	<div class="row">
+
+		<!-- ASIDE - LEFT PANEL -->
+		<div class="col-sm-12 col-md-3 col-lg-3 aside">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+					<li class="breadcrumb-item active" aria-current="page">Panel admina</li>
+				</ol>
+			</nav>
+
+			<div class="list-group-flush">
+				<a href="#" class="list-group-item list-group-item-action">Panel</a>
+				<a href="#" class="list-group-item list-group-item-action">Pracownicy</a>
+				<a href="#" class="list-group-item list-group-item-action">Księgowość</a>
+				<a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
+				<a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+			</div>
+
+			<div class="aside__currentUser">
+				<p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+				<form th:action="@{/logout}" method="get">
+					<button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+				</form>
+			</div>
+		</div><!--/ ASIDE - LEFT PANEL -->
+
+		<!-- CONTENT - RIGHT PANEL -->
+		<div class="col-sm-12 col-md-9 col-lg-9 content">
+
+
+			<div class="panel-group" style="margin-top:40px">
 				<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
 			</div>
-		</div>
-		
+		</div><!--/ CONTENT - RIGHT PANEL -->
+
+
+
 	</div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
 </body>
 </html>

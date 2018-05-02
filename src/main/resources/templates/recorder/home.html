@@ -1,0 +1,33 @@
+
+<div lang="en" th:replace="layout/header"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <p>Zalogowany jako:</p>
+            <span th:utext="${userName}"></span>
+
+            <form th:action="@{/logout}" method="get">
+                <button class="btn btn-outline-danger" name="registration"	type="Submit">Wyloguj</button>
+            </form>
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> RECORDER PANEL</h1>
+            <div class="panel-group" style="margin-top:40px">
+                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            </div>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>
