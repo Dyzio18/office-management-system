@@ -1,0 +1,45 @@
+/* CONTENT - user panel */
+.content{
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.aside{
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #efefef;
+    display: flex;
+    flex-direction: column;
+}
+.aside__currentUser{
+    position: relative;
+    top: 230px;
+}
+.aside > .list-group-flush > .list-group-item-action:hover {
+    background: #E0E0E0 !important;
+}
+.breadcrumb{
+    background: none !important;
+    padding: 0;
+}
+
+
+/* NAVBAR*/
+.logo__img{
+    max-height: 36px;
+    width: auto;
+}
+.logo__text {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+
+/* FOOTER */
+.footer{
+    background: #dcdcdc;
+}
+.list-group-item{
+    background-color: transparent !important;
+}

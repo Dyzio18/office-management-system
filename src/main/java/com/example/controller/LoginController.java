@@ -1,6 +1,9 @@
 package com.example.controller;
 
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -26,7 +29,41 @@ public class LoginController {
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
-	
+
+	@RequestMapping("/home")
+	public ModelAndView defaultAfterLogin() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String role = auth.getAuthorities().toString();
+		String targetUrl = "";
+		ModelAndView modelAndView = new ModelAndView();
+		User user = userService.findUserByEmail(auth.getName());
+
+		if(role.contains("ADMIN")) {
+			targetUrl = "/admin/home";
+			modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+		}
+		else if(role.contains("RECORDER")) {
+			targetUrl = "/recorder/home";
+			modelAndView.addObject("adminMessage","Content Available Only for Users with Recorder Role");
+		}
+		else if(role.contains("LAWYER")) {
+			targetUrl = "/lawyer/home";
+			modelAndView.addObject("adminMessage","Content Available Only for Users with Lawyer Role");
+		}
+		else if(role.contains("ACCOUNTANT")) {
+			targetUrl = "/accountant/home";
+			modelAndView.addObject("adminMessage","Content Available Only for Users with Accountant Role");
+		}
+		else {
+			targetUrl = "/acces-denied";
+		}
+
+		modelAndView.addObject("userName",   user.getName() + " " + user.getLastName());
+		modelAndView.setViewName(targetUrl);
+
+		return modelAndView;
+	}
+
 	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
