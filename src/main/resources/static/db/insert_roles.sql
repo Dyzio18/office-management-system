@@ -16,3 +16,4 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('9', '3');
 
 INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (9, '1', 'ksiegowa@gmail.com', 'Ann', 'Taylor', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('10', '4');
+
