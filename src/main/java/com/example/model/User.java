@@ -2,24 +2,17 @@ package com.example.model;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "user")
+@SecondaryTable(name="user_role", pkJoinColumns = @PrimaryKeyJoinColumn(name="user_id"))
 public class User {
 
 	@Id
@@ -43,9 +36,20 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private int active;
+	@Column(table="user_role", name="role_id")
+	private int RoleId;
+	//	@Range(min=4,max = 1,message="Range role is 1-4")
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+//	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
+
+	public int getRoleId() {
+		return RoleId;
+	}
+
+	public void setRoleId(int role_id) {
+		this.RoleId = role_id;
+	}
 
 	public int getId() {
 		return id;
