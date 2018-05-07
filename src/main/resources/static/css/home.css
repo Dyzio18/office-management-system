@@ -1,5 +1,19 @@
 .admin-message-text {
-	font-style: normal;
-	font-size: 22px;
-	color: #004080;
+	 font-style: normal;
+	 font-size: 22px;
+	 color: #004080;
+ }
+
+/* Home Sidebar */
+.list-group-flush > .active {
+	background: #007bff !important;
+	color: #fff;
+	border-radius: 10px;
+}
+
+.aside > .list-group-flush > .list-group-item-action.active:hover {
+	background: #0b1cff !important;
+	color: #fff;
+	border-radius: 10px;
+	transition: .5s;
 }

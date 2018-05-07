@@ -1,0 +1,81 @@
+
+<div lang="en" th:replace="layout/header"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/recorder/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel rejestratora</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/recorder/home" class="list-group-item list-group-item-action ">Panel</a>
+                <a href="/recorder/add-case" class="list-group-item list-group-item-action active">Dodaj sprawe</a>
+                <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
+                <a href="#" class="list-group-item list-group-item-action">Klienci</a>
+                <a href="#" class="list-group-item list-group-item-action">Sprawy</a>
+            </div>
+
+            <div class="aside__currentUser">
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+        </div><!--/ ASIDE - LEFT PANEL -->
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> Dodaj sprawe </h1>
+
+            <form>
+
+                <div class="form-row">
+                    <div class="col-sm-12 col-md-6">
+                        <label for="client-name">Imie</label>
+                        <input type="text" class="form-control"  id="client-name"  placeholder="Imie">
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <label for="client-surname">Nazwisko</label>
+                        <input type="text" class="form-control" id="client-surname" placeholder="Nazwisko">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-12 col-md-6 form-group">
+                        <label for="case-date">Data</label>
+                        <input class="form-control"  id="case-date" type="date">
+                    </div>
+                    <div class="col-sm-12 col-md-6 form-group">
+                        <label for="case-time">Godzina</label>
+                        <input class="form-control"  id="case-time" type="time">
+                    </div>
+                </div>
+
+                <div class="form-row form-group">
+                    <label for="case-description">Opis sprawy</label>
+                    <textarea class="form-control" id="case-description" rows="4"></textarea>
+                </div>
+
+                <div class="form-row">
+                    <button class="btn btn-primary" type="submit">Dodaj</button>
+                </div>
+
+            </form>
+
+
+
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>
