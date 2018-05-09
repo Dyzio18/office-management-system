@@ -8,17 +8,17 @@
         <div class="col-sm-12 col-md-3 col-lg-3 aside">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Panel adwokata</li>
+                    <li class="breadcrumb-item"><a href="/recorder/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel rejestratora</li>
                 </ol>
             </nav>
 
             <div class="list-group-flush">
-                <a href="#" class="list-group-item list-group-item-action">Panel</a>
-                <a href="#" class="list-group-item list-group-item-action">Pracownicy</a>
-                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
-                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
-                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+                <a href="/recorder/home" class="list-group-item list-group-item-action active">Panel</a>
+                <a href="/recorder/add-case" class="list-group-item list-group-item-action">Dodaj sprawe</a>
+                <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
+                <a href="#" class="list-group-item list-group-item-action">Klienci</a>
+                <a href="#" class="list-group-item list-group-item-action">Sprawy</a>
             </div>
 
             <div class="aside__currentUser">
@@ -32,7 +32,10 @@
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> RECORDER PANEL</h1>
+            <h1> Panel rejestratora </h1>
+
+
+
             <div class="panel-group" style="margin-top:40px">
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
             </div>
