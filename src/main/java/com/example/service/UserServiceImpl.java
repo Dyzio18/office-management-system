@@ -11,6 +11,7 @@ import com.example.model.Role;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
+import java.util.*;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -34,6 +35,11 @@ public class UserServiceImpl implements UserService{
         Role userRole = roleRepository.findByRole("ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
 		userRepository.save(user);
+	}
+
+	@Override
+	public List <User> getAll(){
+		return userRepository.findAll();
 	}
 
 }

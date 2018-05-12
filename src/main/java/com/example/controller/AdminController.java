@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.*;
 
 @Controller
 public class AdminController {
@@ -46,6 +47,16 @@ public class AdminController {
             modelAndView.setViewName("admin/add_employee");
 
         }
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/all_users", method = RequestMethod.GET)
+    public ModelAndView all_users(){
+        ModelAndView modelAndView = new ModelAndView();
+//        User user = new User();
+        List <User> listOfUsers = userService.getAll();
+        modelAndView.addObject("listOfUser", listOfUsers);
+        modelAndView.setViewName("/admin/all_users");
         return modelAndView;
     }
 }
