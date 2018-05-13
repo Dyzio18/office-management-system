@@ -25,34 +25,16 @@
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> ADMIN PANEL</h1>
-            <div class="panel-group" style="margin-top:40px">
-                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
-            </div>
+            <h1> panel edytowania</h1>
 
-            <!--lista userow oraz form dodawanie-edytowanie-->
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Lastname</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Modify</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="user: ${listOfUser}">
-                        <td th:text="${user.id}"></td>
-                        <td th:text="${user.name}"></td>
-                        <td th:text="${user.lastName}"></td>
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.RoleId}"></td>
-                        <td><a href="#" th:href="@{|edit/${user.id}|}">Modify</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <form action="#" method="POST" th:action="@{/admin/all_users/edit}" th:object="${user}">
+                <input type="hidden" th:field="*{id}">
+                <input type="text" th:field="*{name}" placeholder="Name">
+                <input type="text" th:field="*{lastName}" placeholder="Last Name">
+                <input type="text" th:field="*{email}" placeholder="Email">
+                <!--<input type="text" th:field="*{RoleId}" placeholder="Role">-->
+                <input type="submit" th:field="*{name}" placeholder="Update">
+            </form>
         </div><!--/ CONTENT - RIGHT PANEL -->
 
     </div>

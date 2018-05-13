@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -50,7 +52,7 @@ public class AdminController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/all_users", method = RequestMethod.GET)
+    @RequestMapping(value="/admin/all_users", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView all_users(){
         ModelAndView modelAndView = new ModelAndView();
 //        User user = new User();
@@ -58,5 +60,20 @@ public class AdminController {
         modelAndView.addObject("listOfUser", listOfUsers);
         modelAndView.setViewName("/admin/all_users");
         return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView update(@PathVariable Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.findById(id));
+
+        modelAndView.setViewName("/edit");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/admin/all_users/edit", method = RequestMethod.POST)
+    public ModelAndView do_update(@Valid User u, BindingResult bindingResult){
+        userService.saveUser(u);
+        return new ModelAndView("redirect:/admin/all_users");
     }
 }
