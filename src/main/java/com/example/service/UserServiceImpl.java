@@ -38,6 +38,15 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public void updateUser(User user) {
+		user.setPassword(user.getPassword());
+		user.setActive(1);
+		Role userRole = roleRepository.findByRole("ADMIN");
+		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		userRepository.save(user);
+	}
+
+	@Override
 	public List <User> getAll(){
 		return userRepository.findAll();
 	}

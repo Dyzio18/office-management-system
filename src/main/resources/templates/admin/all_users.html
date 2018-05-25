@@ -16,6 +16,7 @@
             <div class="list-group-flush">
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/admin/add_employee" class="list-group-item list-group-item-action active">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action">Lista pracowników</a>
                 <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
                 <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
                 <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
@@ -25,7 +26,7 @@
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> ADMIN PANEL</h1>
+            <h1> PANEL ADMINISTRATORA</h1>
             <div class="panel-group" style="margin-top:40px">
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
             </div>
@@ -35,11 +36,11 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Lastname</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
                     <th>Email</th>
-                    <th>Role</th>
-                    <th>Modify</th>
+                    <th>Rola</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,7 +50,7 @@
                         <td th:text="${user.lastName}"></td>
                         <td th:text="${user.email}"></td>
                         <td th:text="${user.RoleId}"></td>
-                        <td><a href="#" th:href="@{|edit/${user.id}|}">Modify</a></td>
+                        <td><a href="#" th:href="@{|edit/${user.id}|}">Modyfikuj</a></td>
                     </tr>
                 </tbody>
             </table>

@@ -16,6 +16,7 @@
             <div class="list-group-flush">
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/admin/add_employee" class="list-group-item list-group-item-action active">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action">Lista pracowników</a>
                 <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
                 <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
                 <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
@@ -27,12 +28,14 @@
         <div class="col-sm-12 col-md-9 col-lg-9 content">
             <h1> panel edytowania</h1>
 
-            <form action="#" method="POST" th:action="@{/admin/all_users/edit}" th:object="${user}">
+            <form action="#" method="POST" th:action="@{/admin/edit/}+@{user.id}" th:object="${user}">
                 <input type="hidden" th:field="*{id}">
                 <input type="text" th:field="*{name}" placeholder="Name">
                 <input type="text" th:field="*{lastName}" placeholder="Last Name">
                 <input type="text" th:field="*{email}" placeholder="Email">
                 <!--<input type="text" th:field="*{RoleId}" placeholder="Role">-->
+                <input type="text" th:field="*{RoleId}" placeholder="Role" placeholder="RoleId">
+                <input type="hidden" th:field="*{password}" placeholder="password">
                 <input type="submit" th:field="*{name}" placeholder="Update">
             </form>
         </div><!--/ CONTENT - RIGHT PANEL -->
