@@ -76,4 +76,19 @@ public class AdminController {
         userService.updateUser(u);
         return new ModelAndView("redirect:/admin/all_users");
     }
+
+    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView delete_confirm(@PathVariable Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        User userFound = userService.findById(id);
+        userFound.getEmail();//czy na pewno email??
+        modelAndView.setViewName("/admin/delete_confirm");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/do_delete", method = RequestMethod.POST)
+    public ModelAndView do_delete(@Valid User u, BindingResult bindingResult){
+        userService.deleteUser(u);
+        return new ModelAndView("redirect:/admin/all_users");
+    }
 }

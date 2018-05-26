@@ -1,4 +1,5 @@
 package com.example.service;
+import java.lang.Integer;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -54,5 +55,10 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findById(Integer user_id) {
 		return userRepository.findById(user_id);
+	}
+
+	@Override
+	public void deleteUser(User user){
+		userRepository.delete(user);
 	}
 }

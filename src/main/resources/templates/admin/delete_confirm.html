@@ -1,5 +1,4 @@
-<div lang="en" th:replace="layout/header" xmlns:th="http://www.w3.org/1999/xhtml"
-     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"> </div>
+<div lang="en" th:replace="layout/header"> </div>
 
 <div class="container-fluid " >
     <div class="row">
@@ -26,35 +25,34 @@
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> PANEL ADMINISTRATORA</h1>
+            <h1> PANEL ADNIMISTRATORA</h1>
+            <p>Usuń użytkownika o id: <span th:text="${id}"></span></p>
             <div class="panel-group" style="margin-top:40px">
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
             </div>
 
-            <!--lista userow oraz form dodawanie-edytowanie-->
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th>Id</th>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Email</th>
-                    <th>Rola</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="user: ${listOfUser}">
-                        <td th:text="${user.id}"></td>
-                        <td th:text="${user.name}"></td>
-                        <td th:text="${user.lastName}"></td>
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.RoleId}"></td>
-                        <td><a href="#" th:href="@{|edit/${user.id}|}">Modyfikuj</a></td>
-                        <td><a href="#" th:href="@{|delete/${user.id}|}">Usuń</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-md-12 col-md-offset-3">
+                <form autocomplete="off" action="#" th:action="@{/admin/do_delete}"
+                      th:object="${user}" method="post" class="form-horizontal"
+                      role="form">
+                    <!--<div class="form-group">-->
+                        <!--<div class="col-sm-9">-->
+                            <!--<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"-->
+                                   <!--class="validation-message"></label>-->
+                            <!--<input type="text" th:field="*{name}" placeholder="Imię"-->
+                                   <!--class="form-control" />-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-block">Usuń użytkownika</button>
+                        </div>
+                    </div>
+
+                    <!--<span th:utext="${successMessage}"></span>-->
+                </form>
+            </div>
         </div><!--/ CONTENT - RIGHT PANEL -->
 
     </div>
