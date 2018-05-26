@@ -1,4 +1,5 @@
 package com.example.service;
+import java.lang.Integer;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import com.example.model.Role;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
+import java.util.*;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -36,4 +38,27 @@ public class UserServiceImpl implements UserService{
 		userRepository.save(user);
 	}
 
+	@Override
+	public void updateUser(User user) {
+		user.setPassword(user.getPassword());
+		user.setActive(1);
+		Role userRole = roleRepository.findByRole("ADMIN");
+		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+		userRepository.save(user);
+	}
+
+	@Override
+	public List <User> getAll(){
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User findById(Integer user_id) {
+		return userRepository.findById(user_id);
+	}
+
+	@Override
+	public void deleteUser(User user){
+		userRepository.delete(user);
+	}
 }
