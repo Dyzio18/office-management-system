@@ -48,4 +48,13 @@ public class AdminController {
         }
         return modelAndView;
     }
+
+    @RequestMapping(value="/admin/employee_view", method = RequestMethod.GET)
+    public ModelAndView employee_view(){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = new User();
+        modelAndView.addObject("user", user);
+        modelAndView.setViewName("/admin/employee_view");
+        return modelAndView;
+    }
 }
