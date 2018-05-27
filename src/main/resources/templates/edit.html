@@ -1,0 +1,49 @@
+<div lang="en" th:replace="layout/header" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel admina</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/admin/add_employee" class="list-group-item list-group-item-action active">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action">Lista pracowników</a>
+                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
+                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
+                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+            </div>
+
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> PANEL ADMINISTRATORA</h1>
+
+            <form action="#" method="POST" th:action="@{/admin/edit/}+@{user.id}" th:object="${user}">
+                <input type="hidden" th:field="*{id}">
+                <input type="text" th:field="*{name}" placeholder="Name">
+                <input type="text" th:field="*{lastName}" placeholder="Last Name">
+                <input type="text" th:field="*{email}" placeholder="Email">
+                <!--<input type="text" th:field="*{RoleId}" placeholder="Role">-->
+                <input type="text" th:field="*{RoleId}" placeholder="Role" placeholder="RoleId">
+                <input type="hidden" th:field="*{password}" placeholder="password">
+                <input type="submit" th:field="*{name}" placeholder="Update">
+            </form>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>

@@ -1,22 +1,20 @@
 package com.example.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "role")
 public class Role {
+//	@ManyToMany(cascade = CascadeType.REMOVE)
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+//	@ManyToMany(mappedBy="role_id",cascade = CascadeType.REMOVE)
 	@Column(name="role_id")
 	private int id;
 	@Column(name="role")
 	private String role;
-	
+
+
 	public int getId() {
 		return id;
 	}

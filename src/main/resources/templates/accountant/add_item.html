@@ -1,0 +1,72 @@
+<div lang="en" th:replace="layout/header"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/accountant/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel księgowej</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/accountant/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/accountant/list_items" class="list-group-item list-group-item-action">Usługi</a>
+                <a href="/accountant/add_item" class="list-group-item list-group-item-action active">Dodaj usługę</a>
+                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+            </div>
+
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> PANEL KSIĘGOWEJ</h1>
+            <div class="panel-group" style="margin-top:40px">
+                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            </div>
+
+            <div class="col-md-12 col-md-offset-3">
+                <form autocomplete="off" action="#" th:action="@{/accountant/add_item}"
+                      th:object="${item}" method="post" class="form-horizontal"
+                      role="form">
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <label th:if="${#fields.hasErrors('i_name')}" th:errors="*{i_name}"
+                                   class="validation-message"></label>
+                            <input type="text" th:field="*{i_name}" placeholder="Nazwa"
+                                   class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <label	th:if="${#fields.hasErrors('i_price')}" th:errors="*{i_price}"
+                                      class="validation-message"></label>
+                            <input type="text" th:field="*{i_price}"
+                                   placeholder="Cena" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary btn-block">Dodaj usługę</button>
+                        </div>
+                    </div>
+
+                    <span th:utext="${successMessage}"></span>
+
+
+                </form>
+            </div>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>
