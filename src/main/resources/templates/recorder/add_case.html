@@ -32,40 +32,79 @@
             <h1> Dodaj sprawe </h1>
 
 
-        <!-- FORM -->
+        <!-- FORM name,surname, data,time, type,lawyerId, note, price-->
         <div class="col-md-12 col-md-offset-3">
-            <form autocomplete="off"  th:action="@{/recorder/add_case}"  th:object="${item}"
-                  method="post" class="form-horizontal" role="form">
+            <form autocomplete="off"  th:action="@{/recorder/add_case}"  th:object="${item}"  method="post" class="form-horizontal" role="form">
+
+
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <input type="text" th:field="${item.getCaseId()}" placeholder="Nazwa" class="form-control" />
+                        <label th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{clientName}" placeholder="Nazwa"
+                               class="form-control" />
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <div class="col-sm-12 col-md-6 form-group">
-                        <label for="case-date">Data</label>
-                        <input class="form-control"  id="case-date" type="date">
-                    </div>
-                    <div class="col-sm-12 col-md-6 form-group">
-                        <label for="case-time">Godzina</label>
-                        <input class="form-control"  id="case-time" type="time">
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('clientSurname')}" th:errors="*{clientSurname}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{clientSurname}" placeholder="Nazwisko"
+                               class="form-control" />
                     </div>
                 </div>
 
-                <div class="form-row form-group">
-                    <label for="case-description">Opis sprawy</label>
-                    <textarea class="form-control" id="case-description" rows="4"></textarea>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('caseDate')}" th:errors="*{caseDate}"
+                               class="validation-message"></label>
+                        <input type="date" th:field="*{caseDate}" placeholder="Data"
+                               class="form-control" />
+                    </div>
                 </div>
 
-                <div class="form-row">
-                    <button class="btn btn-primary" type="submit">Dodaj</button>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('caseTime')}" th:errors="*{caseTime}"
+                               class="validation-message"></label>
+                        <input type="time" th:field="*{caseTime}" placeholder="Czas"
+                               class="form-control" />
+                    </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{lawyerId}" placeholder="Prawnik"
+                               class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <textarea th:field="*{caseNote}" placeholder="Notatka"
+                               class="form-control" > </textarea>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{casePrice}"
+                               placeholder="Cena" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Dodaj usługę</button>
+                    </div>
+                </div>
+
+                <span th:utext="${successMessage}"></span>
+
 
             </form>
-
-
-
         </div><!--/ CONTENT - RIGHT PANEL -->
 
 
