@@ -8,5 +8,6 @@ import java.util.List;
 public interface ItemService {
     public List<Item> getAll();
     public  void saveItem(Item item);
-    public Item findById(Integer item_id);
+    public Item findById(Integer Id);
+    public void updateItem(Item item);
 }

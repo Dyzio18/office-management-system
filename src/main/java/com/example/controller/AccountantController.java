@@ -5,6 +5,7 @@ import com.example.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -39,7 +40,7 @@ public class AccountantController {
     }
 
     @RequestMapping(value = "/add_item", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid Item item, BindingResult bindingResult) {
+    public ModelAndView createNewItem(@Valid Item item, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("accountant/add_item");
@@ -50,6 +51,20 @@ public class AccountantController {
             modelAndView.setViewName("accountant/add_item");
         }
         return modelAndView;
+    }
+
+    @RequestMapping(value="/edit_item/{id}", method = RequestMethod.GET)
+    public ModelAndView update_item(@PathVariable Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("item", itemService.findById(id));
+        modelAndView.setViewName("accountant/edit_item");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/edit_item/{id}", method = RequestMethod.POST)
+    public ModelAndView do_update_item(@Valid Item item, BindingResult bindingResult){
+        itemService.updateItem(item);
+        return new ModelAndView("redirect:/accountant/list_items");
     }
 
 

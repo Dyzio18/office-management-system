@@ -17,7 +17,7 @@ INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('9', '3');
 INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (10, '1', 'ksiegowa@gmail.com', 'Ann', 'Taylor', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
 INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('10', '4');
 
-INSERT INTO `service` (`service_id`, `service_name`, `service_price`) VALUES (1,"Konsultacja", 150.50);
+INSERT INTO `service` (`service_id`, `service_name`, `service_price`, service_inner_price) VALUES (1,"Konsultacja", 150.50, 45.12);
 
 INSERT INTO `case` (`case_id`, `client_name`, `client_surname`, `case_date`, `case_time`, `case_type`, `case_lawyer`, `case_note`, `case_price`) VALUES (NULL, 'Marian', 'Kowalski', '11-11-2018', '11:00', 'kryminalna', '7', 'Prosba o adwokata ws. marszu niepodleglosci', '500');
 INSERT INTO `case` (`case_id`, `client_name`, `client_surname`, `case_date`, `case_time`, `case_type`, `case_lawyer`, `case_note`, `case_price`) VALUES (NULL, 'Ryszard', 'Kalisz', '12-06-2018', '16:00', 'konsultacje', '7', 'Pan prosi o porade prawną w sprawie konstytucji', '100');

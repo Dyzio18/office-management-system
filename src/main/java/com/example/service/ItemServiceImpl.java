@@ -19,14 +19,20 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item findById(Integer item_id) {
-        return itemRepository.findById(item_id);
+    public Item findById(Integer Id) {
+        return itemRepository.findById(Id);
     }
 
     @Override
     public void saveItem(Item item){
         item.setI_name(item.getI_name());
         item.setI_price(item.getI_price());
+        item.setInner_price(item.getInner_price());
         itemRepository.save(item);
+    }
+
+    @Override
+    public void updateItem(Item item){
+        saveItem(item);
     }
 }
