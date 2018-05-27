@@ -17,3 +17,23 @@
 	border-radius: 10px;
 	transition: .5s;
 }
+
+/* UNTILS */
+
+.min-width-130{
+	min-width: 130px;
+}
+
+
+/* SEARCH */
+.searchInput {
+	background-image: url('https://www.w3schools.com/css/searchicon.png '); /* https://www.w3schools.com/css/searchicon.png */
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	width: 100%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	border: 1px solid #ddd;
+	margin-bottom: 12px;
+	margin-top: 12px;
+}
