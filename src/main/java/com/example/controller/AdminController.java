@@ -57,7 +57,7 @@ public class AdminController {
     public ModelAndView all_users(){
         ModelAndView modelAndView = new ModelAndView();
         List <User> listOfUsers = userService.getAll();
-        modelAndView.addObject("listOfUser", listOfUsers);
+        modelAndView.addObject("listOfUsers", listOfUsers);
         modelAndView.setViewName("/admin/all_users");
         return modelAndView;
     }
@@ -90,5 +90,20 @@ public class AdminController {
     public ModelAndView do_delete(@Valid User u, BindingResult bindingResult){
         userService.deleteUser(u);
         return new ModelAndView("redirect:/admin/all_users");
+    }
+
+    @RequestMapping(value="/all_users", method = RequestMethod.GET, params = "search")
+    public ModelAndView findEmployee(@RequestParam("search") String search) {
+        ModelAndView modelAndView = new ModelAndView();
+        Set<User> listOfUsers = new HashSet<>();
+
+        listOfUsers.add(userService.findUserByEmail(search));
+        listOfUsers.addAll(userService.findUserByLastName(search));
+        listOfUsers.addAll(userService.findUserByName(search));
+        listOfUsers.remove(null);
+
+        modelAndView.addObject("listOfUsers", listOfUsers);
+        modelAndView.setViewName("/admin/all_users");
+        return modelAndView;
     }
 }
