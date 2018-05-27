@@ -76,7 +76,8 @@ DROP TABLE IF EXISTS `service`;
 CREATE TABLE `service` (
   `service_id` int(11) NOT NULL AUTO_INCREMENT,
   `service_name` varchar(255) NOT NULL,
-  `service_price` decimal(5,2) NOT NULL,
+  `service_price` decimal(10,2) NOT NULL,
+  `service_inner_price` decimal(10,2) NOT NULL,
   PRIMARY KEY (`service_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

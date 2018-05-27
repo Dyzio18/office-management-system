@@ -33,15 +33,20 @@
             <table class="table">
                 <thead class="thead-dark">
                 <tr>
+                    <th>Id usługi</th>
                     <th>Nazwa usługi</th>
                     <th>Cena</th>
+                    <th>Koszt zewnętrzny</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="service: ${listOfItems}">
+                    <td th:text="${service.id}"></td>
                     <td th:text="${service.i_name}"></td>
                     <td th:text="${service.i_price}"></td>
+                    <td th:text="${service.inner_price}"></td>
+                    <td><a href="#" th:href="@{|edit_item/${service.id}|}">Modyfikuj</a></td>
                 </tr>
                 </tbody>
             </table>

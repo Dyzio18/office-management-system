@@ -14,7 +14,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="service_id")
-    private int id;
+    public int id;
 
     @Column(name = "service_name")
     @NotEmpty(message = "*Please provide name")
@@ -24,11 +24,15 @@ public class Item {
     @NotNull
     private BigDecimal i_price;
 
-    public int getI_id() {
+    @Column(name="service_inner_price")
+    @NotNull
+    private BigDecimal inner_price;
+
+    public int getId() {
         return id;
     }
 
-    public void setI_id(int i_id) {
+    public void setId(int i_id) {
         this.id = i_id;
     }
 
@@ -48,4 +52,11 @@ public class Item {
         this.i_price = i_price;
     }
 
+    public BigDecimal getInner_price() {
+        return inner_price;
+    }
+
+    public void setInner_price(BigDecimal inner_price) {
+        this.inner_price = inner_price;
+    }
 }
