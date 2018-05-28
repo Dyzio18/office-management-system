@@ -1,0 +1,44 @@
+<div lang="en" th:replace="layout/header" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/accountant/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel księgowej</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/accountant/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/accountant/list_items" class="list-group-item list-group-item-action">Usługi</a>
+                <a href="/accountant/add_item" class="list-group-item list-group-item-action active">Dodaj usługę</a>
+                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+            </div>
+
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> PANEL KSIĘGOWEJ</h1>
+
+            <form action="#" method="POST" th:action="@{/accountant/edit_item/}+@{service.id}" th:object="${item}">
+                <input type="hidden" th:field="*{id}">
+                <input type="text" th:field="*{i_name}" placeholder="Nazwa">
+                <input type="text" th:field="*{i_price}" placeholder="Cena">
+                <input type="text" th:field="*{inner_price}" placeholder="Koszt zewnętrzny">
+                <input type="submit" th:field="*{i_name}" placeholder="Update">
+            </form>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>
