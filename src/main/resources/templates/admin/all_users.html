@@ -15,8 +15,8 @@
 
             <div class="list-group-flush">
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
-                <a href="/admin/add_employee" class="list-group-item list-group-item-action active">Dodaj pracownika</a>
-                <a href="/admin/all_users" class="list-group-item list-group-item-action">Lista pracowników</a>
+                <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
                 <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
                 <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
                 <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
@@ -29,6 +29,31 @@
             <h1> PANEL ADMINISTRATORA</h1>
             <div class="panel-group" style="margin-top:40px">
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            </div>
+
+            <form autocomplete="off" action="#" th:action="@{/admin/all_users}"
+                  th:object="${user}" method="get" class="form-horizontal"
+                  role="form">
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" placeholder="Podaj imię, nazwisko lub email"
+                               class="form-control" name="search"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Znajdź pracownika</button>
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <a href="/admin/all_users">
+                        <button type="submit" class="btn btn-primary btn-block">Wyświetl wszystkich pracowników</button>
+                    </a>
+                </div>
             </div>
 
             <!--lista userow oraz form dodawanie-edytowanie-->
@@ -44,7 +69,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="user: ${listOfUser}">
+                    <tr th:each="user: ${listOfUsers}">
                         <td th:text="${user.id}"></td>
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.lastName}"></td>
