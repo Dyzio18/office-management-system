@@ -52,7 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/login").permitAll()
 				.antMatchers("/registration").permitAll()
 				.antMatchers("/admin/**").hasAuthority("ADMIN")
-				.antMatchers("/recorder/**").hasAuthority("RECORDER")
+				//.antMatchers("/recorder/**").hasAuthority("RECORDER")
 				.anyRequest().authenticated().and().csrf().disable()
 			.formLogin()
 				.defaultSuccessUrl("/home")

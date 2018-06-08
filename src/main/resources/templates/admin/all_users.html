@@ -1,0 +1,72 @@
+<div lang="en" th:replace="layout/header" xmlns:th="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel admina</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
+                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
+                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
+                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+            </div>
+
+            <div class="aside__currentUser">
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> PANEL ADMINISTRATORA</h1>
+            <div class="panel-group" style="margin-top:40px">
+                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            </div>
+
+            <!--lista userow oraz form dodawanie-edytowanie-->
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Rola</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user: ${listOfUser}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.lastName}"></td>
+                        <td th:text="${user.email}"></td>
+                        <td th:text="${user.RoleId}"></td>
+                        <td><a href="#" th:href="@{|employee_view/${user.id}|}">Więcej</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>
