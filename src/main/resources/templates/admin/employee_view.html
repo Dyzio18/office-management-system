@@ -1,0 +1,88 @@
+<div lang="en" th:replace="layout/header" xmlns:color="http://www.w3.org/1999/xhtml"
+     xmlns:color="http://www.w3.org/1999/xhtml" xmlns:color="http://www.w3.org/1999/xhtml"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel admina</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
+                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
+                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
+                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+            </div>
+
+            <div class="aside__currentUser">
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="py-5 bg-light" id="speakers">
+            <div class="container-fluid" style="">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 align="center" >Pracownik<br></h1>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-6 col-lg-12" align="center">
+                            <img th:src="@{/images/employee.png}" class="center-block img-fluid my-3 rounded-circle" width="300">
+                            <div class="name">
+                                <h3 id="first_name" th:text="${user.name}" align="center" style="color: #007bff; display:inline-block;">name</h3>
+                                <h3 id="last_name" th:text="${user.lastName}" align="center" style="color: #007bff; display:inline-block;">lastName</h3>
+                            </div>
+                            <p class="text-muted" th:text="${user.RoleId}" align="center">RoleId</p>
+                            <p id="active" th:text="${user.active}" align="center">active</p>
+                            <!--<p id="active" th:text="${user.active}" align="center"></p>-->
+                            <p id="email" th:text="${user.email}" align="center">email</p>
+                            <p id="password" align="center"></p>
+                            <p id="phoneNumber" align="center"></p>
+                            <p id="street" align="center"></p>
+                            <div class="adress">
+                                <p id="code" align="center" style="display:inline-block;"></p>
+                                <p id="city" align="center" style="display:inline-block;"></p>
+                            </div>
+                        <a class="btn btn-primary" href="#" th:href="@{|edit/${user.id}|}" align="center" >Edytuj</a>
+                        <a class="btn btn-danger" href="#" th:href="@{|delete/${user.id}|}" align="center" >Usuń</a>
+                    </div>
+                </div>
+            </div>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+<script>
+    <!--Tutaj skryptcik na zamiane (1,0) na ("aktywne", "nieaktywne")-->
+    var input =  document.getElementById("active");
+    if(input.textContent==1)
+    {
+        input.innerHTML  = "Aktywne";
+    }
+    if(input.textContent==0)
+    {
+        input.innerHTML  = "Nieaktywne";
+    }
+
+
+</script>
+
+</body>
+</html>

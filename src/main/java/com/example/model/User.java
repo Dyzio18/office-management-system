@@ -36,9 +36,11 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private int active;
-	@ManyToMany(cascade = CascadeType.ALL)
+
+	//@ManyToMany(cascade = CascadeType.ALL)
 	//@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles;
+	//private Set<Role> roles;
+
 	@Column(table="user_role", name="role_id")
 	@Range(min=1, max=4,message="Range role is 1-4")
 	private int RoleId;
@@ -100,12 +102,12 @@ public class User {
 		this.active = active;
 	}
 
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+//	public Set<Role> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(Set<Role> roles) {
+//		this.roles = roles;
+//	}
 
 }
