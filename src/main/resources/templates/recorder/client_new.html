@@ -1,0 +1,106 @@
+
+<div lang="en" th:replace="layout/header"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/recorder/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel rejestratora</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/recorder/home" class="list-group-item list-group-item-action ">Panel</a>
+                <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
+                <a href="/recorder/clients" class="list-group-item list-group-item-action">Klienci</a>
+                <a href="/recorder/client_new" class="list-group-item list-group-item-action active">Dodaj klienta</a>
+                <a href="/recorder/cases" class="list-group-item list-group-item-action">Sprawy</a>
+            </div>
+
+            <div class="aside__currentUser">
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> PANEL REJESTRATORA</h1>
+            <h2> Dodawanie nowego klienta </h2>
+
+
+            <form autocomplete="off" action="#" th:action="@{/recorder/client_new}"
+                  th:object="${client}" method="post" class="form-horizontal" role="form">
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <p>Imie: </p>
+                        <label th:if="${#fields.hasErrors('c_name')}" th:errors="*{c_name}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{c_name}" placeholder="Imie" required  class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <p>Nazwisko: </p>
+                        <label th:if="${#fields.hasErrors('c_surname')}" th:errors="*{c_surname}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{c_surname}" placeholder="Nazwisko" required class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <p>Numer telefonu: </p>
+                        <input type="text" th:field="*{c_phone}" placeholder="Telefon" required class="form-control" />
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Dodaj klienta</button>
+                    </div>
+                </div>
+                <span class="alert-primary" th:utext="${successMessage}"></span>
+            </form>
+
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+
+
+    </div>
+</div>
+
+<script>
+    function search(column) {
+        var input, input2, filter, table, tr, td, i;
+        input = document.getElementById("searchInput");
+        input2 = document.getElementById("searchInput2");
+
+        filter = input.value.toUpperCase() || input2.value.toUpperCase();
+        table = document.getElementById("caseTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[column];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>

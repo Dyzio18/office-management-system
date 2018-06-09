@@ -120,6 +120,34 @@ INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password
 -- Indexes for dumped tables
 --
 
+DROP TABLE IF EXISTS `service`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `service` (
+  `service_id` int(11) NOT NULL AUTO_INCREMENT,
+  `service_name` varchar(255) NOT NULL,
+  `service_price` decimal(10,2) NOT NULL,
+  `service_inner_price` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `client`
+--
+
+DROP TABLE IF EXISTS `client`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `client` (
+  `client_id` int(11) NOT NULL AUTO_INCREMENT,
+  `client_name` varchar(255) NOT NULL,
+  `client_surname` varchar(255) NOT NULL,
+  `client_phone` varchar(255) NOT NULL,
+  PRIMARY KEY (`client_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
 -- Indexes for table `case`
 --
