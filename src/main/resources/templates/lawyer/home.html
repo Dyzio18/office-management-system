@@ -17,7 +17,7 @@
                 <a href="/lawyer/home" class="list-group-item list-group-item-action active">Panel</a>
                 <a href="/lawyer/cases" class="list-group-item list-group-item-action">Wszystkie sprawy</a>
                 <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
-                <a href="#" class="list-group-item list-group-item-action">Klienci</a>
+                <!--<a href="#" class="list-group-item list-group-item-action">Klienci</a>-->
             </div>
 
             <div class="aside__currentUser">
@@ -55,6 +55,7 @@
                     <th class="min-width-130"  scope="col">Godzina</th>
                     <!--<th scope="col">Prowadzący</th>-->
                     <th scope="col">Szczegóły</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,7 @@
                     <td class="min-width-130" th:text="${case.getCaseTime()}"></td>
                     <!--<td th:text="${case.getLawyerId()}"></td>-->
                     <td th:text="${case.getCaseNote()}"></td>
+                    <td><a class="btn btn-primary" th:href="@{|edit_case/${case.id}|}">Edytuj</a></td>
                 </tr>
                 </tbody>
             </table>

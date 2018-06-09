@@ -13,8 +13,7 @@
     flex-direction: column;
 }
 .aside__currentUser{
-    position: relative;
-    top: 230px;
+    margin-top: 30px;
 }
 .aside > .list-group-flush > .list-group-item-action:hover {
     background: #E0E0E0 !important;
