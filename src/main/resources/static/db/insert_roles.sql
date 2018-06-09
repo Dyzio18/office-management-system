@@ -5,17 +5,17 @@ INSERT INTO `role` VALUES (4,'ACCOUNTANT'); -- Accountant - 4 - Ksiegowa
 
 -- TEST USERS with ROLE --
 -- Password for users: 12345 --
-INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (7, '1', 'joe@gmail.com', 'Smith', 'Joe', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('7', '1');
+INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (1, '1', 'admin@gmail.com', 'Admin', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('1', '1');
 
-INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (8, '1', 'bob@gmail.com', 'Smith', 'Bob', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('8', '2');
+INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (2, '1', 'rejestrator@gmail.com', 'Rejestrator', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('2', '2');
 
-INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (9, '1', 'Stephen@gmail.com', 'Smith', 'Stephen', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('9', '3');
+INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (3, '1', 'adwokat@gmail.com', 'Adwokat', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('3', '3');
 
-INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (10, '1', 'ksiegowa@gmail.com', 'Ann', 'Taylor', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('10', '4');
+INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password`) VALUES (4, '1', 'ksiegowa@gmail.com', 'Ksiegowa', 'Pani', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK');
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES ('4', '4');
 
 INSERT INTO `service` (`service_id`, `service_name`, `service_price`, service_inner_price) VALUES (1,"Konsultacja", 150.50, 45.12);
 
