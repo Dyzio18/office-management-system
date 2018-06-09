@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("caseRepository")
 public interface CaseRepository extends JpaRepository<Case,Long> {
-   Case findById(Integer Id);
+   Case findById(Long Id);
 }

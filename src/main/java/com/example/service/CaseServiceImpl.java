@@ -19,14 +19,12 @@ public class CaseServiceImpl implements CaseService {
     }
 
     @Override
-    public Case findById(Integer case_id) {
+    public Case findById(Long case_id) {
         return caseRepository.findById(case_id);
     }
 
     @Override
-    public void saveCase(Case myCase){
-        Case newCase = new Case();
-        newCase.setClientName(myCase.getClientName());
-        caseRepository.save(newCase);
+    public void saveCase(Case c){
+        caseRepository.save(c);
     }
 }

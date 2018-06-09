@@ -22,6 +22,7 @@ import com.example.service.UserService;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -130,11 +131,12 @@ public class LoginController {
 
         LocalDate date = LocalDate.now();
 
-        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd-MM-u");
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("u-MM-dd");
         String textDate = date.format(formatters);
 
         List<Case> allCases = caseService.getAll();
         List<Case> currentDayCases = new ArrayList<>();
+        Collections.sort(allCases, Case.getComparator());
         for (Case c : allCases) {
             if (c.lawyerId == user.getId() && c.getCaseDate().equals(textDate)) {
                 currentDayCases.add(c);

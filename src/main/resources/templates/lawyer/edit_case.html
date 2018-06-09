@@ -1,0 +1,122 @@
+
+<div lang="en" th:replace="layout/header"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/lawyer/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel adwokata</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/lawyer/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/lawyer/cases" class="list-group-item list-group-item-action">Wszystkie sprawy</a>
+                <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
+                <!--<a href="#" class="list-group-item list-group-item-action">Klienci</a>-->
+            </div>
+
+            <div class="aside__currentUser">
+
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+        </div><!--/ ASIDE - LEFT PANEL -->
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> Edytuj sprawę </h1>
+
+
+         <!--FORM name,surname, data,time, type,lawyerId, note, price-->
+        <div class="col-md-12 col-md-offset-3">
+            <form autocomplete="off"  th:action="@{/lawyer/edit_case}"  th:object="${case}"  method="post" class="form-horizontal" role="form">
+
+<!--
+TO JEST DO ZMIANY! (FORMULARZ)
+    TODO:
+    Na podstawie Id klienta
+    dodać sprawe do BD
+    * Trzeba zmienić konstruktor sprawy by tam podawać ID (ewentualnie imie i nazwisko)
+    * z kontrolera wtedy wysyłać model (z już zainicjowanym id klienta)
+-->
+
+                <input type="hidden" th:field="*{caseId}" />
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{clientName}" placeholder="Imie" class="form-control" th:classappend="${#fields.hasErrors('clientName')} ? is-invalid : ''" />
+                        <div th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{clientSurname}" placeholder="Nazwisko" class="form-control" th:classappend="${#fields.hasErrors('clientSurname')} ? is-invalid : ''" />
+                        <div th:if="${#fields.hasErrors('clientSurname')}" th:errors="*{clientSurname}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="date" th:field="*{caseDate}" placeholder="Data" class="form-control" th:classappend="${#fields.hasErrors('caseDate')} ? is-invalid : ''" />
+                        <div th:if="${#fields.hasErrors('caseDate')}" th:errors="*{caseDate}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="time" th:field="*{caseTime}" placeholder="Czas" class="form-control" th:classappend="${#fields.hasErrors('caseTime')} ? is-invalid : ''" />
+                        <div th:if="${#fields.hasErrors('caseTime')}" th:errors="*{caseTime}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <input type="hidden" th:field="*{lawyerId}" />
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{caseType}" placeholder="Typ sprawy" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <textarea th:field="*{caseNote}" placeholder="Notatka" class="form-control" th:classappend="${#fields.hasErrors('caseNote')} ? is-invalid : ''" />
+                        <div th:if="${#fields.hasErrors('caseNote')}" th:errors="*{caseNote}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="number" th:field="*{casePrice}" step=".01" placeholder="Cena" class="form-control" th:classappend="${#fields.hasErrors('casePrice')} ? is-invalid : ''" />
+                        <div th:if="${#fields.hasErrors('casePrice')}" th:errors="*{casePrice}" class="invalid-feedback"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Zapisz zmiany</button>
+                    </div>
+                </div>
+
+                <div class="alert-primary" role="alert">
+                    <span th:utext="${successMessage}"></span>
+                </div>
+
+            </form>
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>

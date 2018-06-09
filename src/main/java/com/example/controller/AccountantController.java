@@ -26,7 +26,7 @@ public class AccountantController {
         ModelAndView view = new ModelAndView();
         List<Item> listOfItems = itemService.getAll();
         view.addObject("listOfItems", listOfItems);
-        view.setViewName("/accountant/list_items");
+        view.setViewName("/accountant/currentCases");
         return view;
     }
 
@@ -64,7 +64,7 @@ public class AccountantController {
     @RequestMapping(value="/edit_item/{id}", method = RequestMethod.POST)
     public ModelAndView do_update_item(@Valid Item item, BindingResult bindingResult){
         itemService.updateItem(item);
-        return new ModelAndView("redirect:/accountant/list_items");
+        return new ModelAndView("redirect:/accountant/currentCases");
     }
 
 

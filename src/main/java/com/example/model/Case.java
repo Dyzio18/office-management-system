@@ -1,9 +1,14 @@
 package com.example.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
   `case_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -49,9 +54,11 @@ public class Case {
     public int lawyerId;
 
     @Column(name = "`case_note`")
+    @NotEmpty(message = "*Podaj opis sprawy")
     public String caseNote;
 
     @Column(name="`case_price`")
+    @NotNull(message = "*Podaj cenę")
     public BigDecimal casePrice;
 
     public Long getCaseId() {
@@ -124,5 +131,20 @@ public class Case {
 
     public void setCasePrice(BigDecimal casePrice) {
         this.casePrice = casePrice;
+    }
+
+    public static Comparator<Case> getComparator() {
+        return new Comparator<Case>(){
+            @Override
+            public int compare(Case c1, Case c2)
+            {
+                String c1Date = c1.getCaseDate();
+                String c2Date = c2.getCaseDate();
+                if (c1Date.equals(c2Date)) {
+                    return c1.getCaseTime().compareTo(c2.getCaseTime());
+                }
+                return c1Date.compareTo(c2Date);
+            }
+        };
     }
 }

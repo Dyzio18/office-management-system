@@ -45,8 +45,8 @@ CREATE TABLE `case` (
 --
 
 INSERT INTO `case` (`case_id`, `case_date`, `case_note`, `case_price`, `case_time`, `case_type`, `client_name`, `client_surname`, `case_lawyer`) VALUES
-(1, '11-11-2018', 'Prosba o adwokata ws. marszu niepodleglosci', 500.00, '11:00', 'kryminalna', 'Marian', 'Kowalski', 7),
-(2, '12-06-2018', 'Pan prosi o porade prawn? w sprawie konstytucji', 100.00, '16:00', 'konsultacje', 'Ryszard', 'Kalisz', 7);
+(1, '2018-11-11', 'Prosba o adwokata ws. marszu niepodleglosci', 500.00, '11:00', 'kryminalna', 'Marian', 'Kowalski', 7),
+(2, '2018-06-12', 'Pan prosi o porade prawna w sprawie konstytucji', 100.00, '16:00', 'konsultacje', 'Ryszard', 'Kalisz', 7);
 
 -- --------------------------------------------------------
 
@@ -120,17 +120,17 @@ INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password
 -- Indexes for dumped tables
 --
 
-DROP TABLE IF EXISTS `service`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `service` (
-  `service_id` int(11) NOT NULL AUTO_INCREMENT,
-  `service_name` varchar(255) NOT NULL,
-  `service_price` decimal(10,2) NOT NULL,
-  `service_inner_price` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`service_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+# DROP TABLE IF EXISTS `service`;
+# /*!40101 SET @saved_cs_client     = @@character_set_client */;
+# /*!40101 SET character_set_client = utf8 */;
+# CREATE TABLE `service` (
+#   `service_id` int(11) NOT NULL AUTO_INCREMENT,
+#   `service_name` varchar(255) NOT NULL,
+#   `service_price` decimal(10,2) NOT NULL,
+#   `service_inner_price` decimal(10,2) NOT NULL,
+#   PRIMARY KEY (`service_id`)
+# ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+# /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `client`
