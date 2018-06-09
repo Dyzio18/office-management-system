@@ -47,7 +47,7 @@
                                 <h3 id="first_name" th:text="${user.name}" align="center" style="color: #007bff; display:inline-block;">name</h3>
                                 <h3 id="last_name" th:text="${user.lastName}" align="center" style="color: #007bff; display:inline-block;">lastName</h3>
                             </div>
-                            <p class="text-muted" th:text="${user.RoleId}" align="center">RoleId</p>
+                            <p class="text-muted" id="role" th:text="${user.RoleId}" align="center">RoleId</p>
                             <p id="active" th:text="${user.active}" align="center">active</p>
                             <!--<p id="active" th:text="${user.active}" align="center"></p>-->
                             <p id="email" th:text="${user.email}" align="center">email</p>
@@ -72,16 +72,32 @@
 <script>
     <!--Tutaj skryptcik na zamiane (1,0) na ("aktywne", "nieaktywne")-->
     var input =  document.getElementById("active");
+    var input_role =  document.getElementById("role");
     if(input.textContent==1)
     {
-        input.innerHTML  = "Aktywne";
+        input.innerHTML  = "aktywne";
     }
     if(input.textContent==0)
     {
-        input.innerHTML  = "Nieaktywne";
+        input.innerHTML  = "nieaktywne";
     }
 
-
+    if(input_role.textContent==1)
+    {
+        input_role.innerHTML = "Kierownik";
+    }
+     if(input_role.textContent==2)
+    {
+        input_role.innerHTML = "Rejestrator";
+    }
+     if(input_role.textContent==3)
+    {
+        input_role.innerHTML = "Adwokat";
+    }
+     if(input_role.textContent==4)
+    {
+        input_role.innerHTML = "Księgowa";
+    }
 </script>
 
 </body>
