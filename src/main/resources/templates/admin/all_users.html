@@ -17,9 +17,6 @@
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
                 <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
-                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
-                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
-                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
             </div>
 
             <div class="aside__currentUser">
@@ -51,14 +48,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="user: ${listOfUser}">
-                        <td th:text="${user.id}"></td>
-                        <td th:text="${user.name}"></td>
-                        <td th:text="${user.lastName}"></td>
-                        <td th:text="${user.email}"></td>
-                        <td th:text="${user.RoleId}"></td>
-                        <td><a href="#" th:href="@{|employee_view/${user.id}|}">Więcej</a></td>
-                    </tr>
+                <tr th:each="user: ${listOfUser}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.lastName}"></td>
+                    <td th:text="${user.email}"></td>
+                    <div th:switch="${user.RoleId}">
+                        <td th:case="1">Administrator</td>
+                        <td th:case="2">Rejestrator</td>
+                        <td th:case="3">Adwokat</td>
+                        <td th:case="4">Księgowa</td>
+                    </div>
+                    <td><a href="#" th:href="@{|employee_view/${user.id}|}">Więcej</a></td>
+                </tr>
                 </tbody>
             </table>
         </div><!--/ CONTENT - RIGHT PANEL -->

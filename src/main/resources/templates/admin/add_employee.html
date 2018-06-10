@@ -16,9 +16,6 @@
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/admin/add_employee" class="list-group-item list-group-item-action active">Dodaj pracownika</a>
                 <a href="/admin/all_users" class="list-group-item list-group-item-action">Lista pracowników</a>
-                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
-                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
-                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
             </div>
 
             <div class="aside__currentUser">
@@ -33,14 +30,20 @@
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
             <h1> PANEL ADMINISTRATORA</h1>
+            <ul>
+                <li>1 - ADMINISTRATOR</li>
+                <li>2 - REJESTRUJĄCY</li>
+                <li>3 - ADWOKAT</li>
+                <li>4 - KSIĘGOWA</li>
+            </ul>
             <div class="panel-group" style="margin-top:40px">
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
             </div>
 
             <div class="col-md-12 col-md-offset-3">
-                <form autocomplete="off" action="#" th:action="@{/admin/add_employee}"
+                <form name="myForm" autocomplete="off" action="#" th:action="@{/admin/add_employee}"
                       th:object="${user}" method="post" class="form-horizontal"
-                      role="form">
+                      role="form" onsubmit="return validateForm()">
                     <div class="form-group">
                         <div class="col-sm-9">
                             <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
@@ -101,6 +104,45 @@
 </div>
 
 <div lang="en" th:replace="layout/footer :: footer"> </div>
+
+<script>
+    function validateForm() {
+        var x = document.forms["myForm"]["name"].value;
+        var reg = /^[a-zA-Z]+$/;
+        if (!reg.test(x)) {
+            alert("Nieprawidłowe imię");
+            return false;
+        }
+
+        var x2 = document.forms["myForm"]["lastName"].value;
+        var reg = /^[a-zA-Z\-]+$/;
+        if (!reg.test(x2)) {
+            alert("Nieprawidłowe nazwisko");
+            return false;
+        }
+
+        var x3 = document.forms["myForm"]["email"].value;
+        var reg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!reg.test(x3)) {
+            alert("Nieprawidłowy adres email");
+            return false;
+        }
+
+        var x4 = document.forms["myForm"]["password"].value;
+        var reg = /^.{5,}$/;
+        if (!reg.test(x4)) {
+            alert("Hasło musi być dłuższe niż 4 znaki");
+            return false;
+        }
+
+        var x5 = document.forms["myForm"]["RoleId"].value;
+        var reg = /^[1-4]$/;
+        if (!reg.test(x5)) {
+            alert("Role użytkownika to wg specyfikacji poniżej liczby z przedziału 1-4");
+            return false;
+        }
+    }
+</script>
 
 </body>
 </html>
