@@ -17,9 +17,6 @@
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
                 <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
-                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
-                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
-                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
             </div>
 
             <div class="aside__currentUser">
@@ -33,7 +30,14 @@
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> PANEL ADMINISTRATORA</h1>
+            <h1> PANEL ADMINISTRATORA </h1>
+
+            <ul>
+                <li>1 - ADMINISTRATOR</li>
+                <li>2 - REJESTRUJĄCY</li>
+                <li>3 - ADWOKAT</li>
+                <li>4 - KSIĘGOWA</li>
+            </ul>
 
             <form action="#" method="POST" th:action="@{/admin/edit/}+@{user.id}" th:object="${user}">
                 <input type="hidden" th:field="*{id}">
