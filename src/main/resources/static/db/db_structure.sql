@@ -32,7 +32,7 @@ CREATE TABLE `case` (
   `case_id` bigint(20) NOT NULL,
   `case_date` varchar(255) NOT NULL,
   `case_note` varchar(255) DEFAULT NULL,
-  `case_price` decimal(19,2) DEFAULT NULL,
+#   `case_price` decimal(19,2) DEFAULT NULL,
   `case_time` varchar(255) NOT NULL,
   `case_type` varchar(255) DEFAULT NULL,
   `client_name` varchar(255) NOT NULL,
@@ -44,9 +44,20 @@ CREATE TABLE `case` (
 -- Dumping data for table `case`
 --
 
-INSERT INTO `case` (`case_id`, `case_date`, `case_note`, `case_price`, `case_time`, `case_type`, `client_name`, `client_surname`, `case_lawyer`) VALUES
-(1, '2018-11-11', 'Prosba o adwokata ws. marszu niepodleglosci', 500.00, '11:00', 'kryminalna', 'Marian', 'Kowalski', 7),
-(2, '2018-06-12', 'Pan prosi o porade prawna w sprawie konstytucji', 100.00, '16:00', 'konsultacje', 'Ryszard', 'Kalisz', 7);
+INSERT INTO `case` (`case_id`, `case_date`, `case_note`, `case_time`, `case_type`, `client_name`, `client_surname`, `case_lawyer`) VALUES
+(1, '2018-11-11', 'Prosba o adwokata ws. marszu niepodleglosci', '11:00', 'kryminalna', 'Marian', 'Kowalski', 3),
+(2, '2018-06-11', 'Pan prosi o porade prawna w sprawie konstytucji', '11:00', 'konsultacje', 'Ryszard', 'Kalisz', 3),
+(3, '2018-06-11', 'Pan prosi o porade prawna w sprawie pobicia', '12:30', 'konsultacje', 'Janusz', 'Nowak', 3),
+(4, '2018-06-12', 'Pan prosi o porade prawna w sprawie kradziezy', '13:45', 'konsultacje', 'Pawel', 'Zbyszko', 3),
+(5, '2018-06-14', 'Pan prosi o porade prawna w sprawie wypadku', '10:00', 'konsultacje', 'Jan', 'Krzeslo', 3),
+(6, '2018-06-20', 'Pan prosi o porade prawna w sprawie nekania', '13:00', 'konsultacje', 'Ryszard', 'Kalisz', 3),
+(7, '2018-06-21', 'Pan prosi o porade prawna w sprawie awantury', '14:00', 'konsultacje', 'Marek', 'Szklaneczka', 3),
+(8, '2018-07-02', 'Pan prosi o porade prawna w sprawie libacji', '13:25', 'konsultacje', 'Jakub', 'Kieliszek', 3),
+(9, '2018-07-10', 'Pan prosi o porade prawna w sprawie mandatu', '11:30', 'konsultacje', 'Marcin', 'Pucharek', 3),
+(10, '2018-06-11', 'Pan prosi o porade prawna w sprawie morderstwa', '13:00', 'konsultacje', 'Ryszard', 'Kalisz', 5),
+(11, '2018-06-11', 'Pan prosi o porade prawna w sprawie plagiatu', '14:00', 'konsultacje', 'Marek', 'Szklaneczka', 5),
+(12, '2018-07-13', 'Pan prosi o porade prawna w sprawie obrazania uczuc religijnych', '13:25', 'konsultacje', 'Jakub', 'Kieliszek', 5),
+(13, '2018-07-22', 'Pan prosi o porade prawna w sprawie ochrony dobrego imienia', '11:30', 'konsultacje', 'Marcin', 'Pucharek', 5);
 
 -- --------------------------------------------------------
 
@@ -111,6 +122,7 @@ INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password
 (2, 1, 'rejestrator@gmail.com', 'Rejestrator', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 2),
 (3, 1, 'adwokat@gmail.com', 'Adwokat', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 3),
 (4, 1, 'ksiegowa@gmail.com', 'Ksiegowa', 'Pani', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 4),
+(5, 1, 'adwokat2@gmail.com', 'Adwokat2', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 3),
 (17, 0, 'test@gmail.com', 'NazwiskoTestera1', 'ImieTestera1', '$2a$10$/W6BDeKZyjt8LCdz4gc.o.dHHsUVLhJjlIczSx4pKXUPjfP8g7Ue6', 2);
 
 --
@@ -145,7 +157,9 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO `client` (`client_id`, `client_name`, `client_surname`, `client_phone`) VALUES (NULL, 'Adam', 'Kowalski', '788996411'), (NULL, 'Beata', 'Tyszkiewicz', '964789125'), (NULL, 'Stefan', 'Kowalski', '789444566'), (NULL, 'Mirosław', 'Nowak', '655455155');
+INSERT INTO `client` (`client_id`, `client_name`, `client_surname`, `client_phone`) VALUES
+(NULL, 'Adam', 'Kowalski', '788996411'), (NULL, 'Beata', 'Tyszkiewicz', '964789125'),
+(NULL, 'Stefan', 'Kowalski', '789444566'), (NULL, 'Mirosław', 'Nowak', '655455155');
 
 --
 -- Indexes for table `case`
