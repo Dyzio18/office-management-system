@@ -32,50 +32,67 @@
             <h4>Wyszukiwarka</h4><br>
             <div class="row">
                 <div class="col-sm-12 col-md-3">
-                    <label for="searchInput">Nazwa usługi</label>
-                    <input class="searchInput" type="text" id="searchInput" onkeyup="search(1)" placeholder="Wyszukaj usługę" >
+                    <label  class="font-weight-light" for="searchInput">Nazwa usługi</label>
+                    <input class="searchInput" type="text" id="searchInput" onkeyup="search(1)" placeholder="Wyszukaj nazwe usługi" >
                 </div>
                 <div class="col-sm-12 col-md-3">
-                    <label for="searchInput2">Cena</label>
-                    <input class="searchInput" type="text" id="searchInput2" onkeyup="search(2)" placeholder="Wyszukaj po cenie" >
+                    <label  class="font-weight-light" for="searchInput2">ID sprawy</label>
+                    <input class="searchInput" type="text" id="searchInput2" onkeyup="search(2)" placeholder="Wyszukaj ID sprawy" >
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <label  class="font-weight-light" for="searchInput3">Data</label>
+                    <input class="searchInput" type="text" id="searchInput3" onkeyup="search(3)" placeholder="Wyszukaj date usługi" >
+                </div>
+                <div class="col-sm-12 col-md-3 justify-content-center ">
+                    <p></p>
+                    <button onclick="generatePDF()" class="btn btn-primary btn-lg"> Generuj PDF </button>
                 </div>
             </div>
 
             <!--lista userow oraz form dodawanie-edytowanie-->
-            <table id="itemTable" class="table table-striped table-hover">
-                <thead class="thead-dark">
-                <tr>
-                    <th>Id usługi</th>
-                    <th>Nazwa usługi</th>
-                    <th>Cena</th>
-                    <th>Koszt zewnętrzny</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="service: ${listOfItems}">
-                    <td th:text="${service.id}"></td>
-                    <td th:text="${service.i_name}"></td>
-                    <td th:text="${service.i_price}"></td>
-                    <td th:text="${service.inner_price}"></td>
-                    <td><a href="#" th:href="@{|edit_item/${service.id}|}">Modyfikuj</a></td>
-                </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table id="itemTable" class="table table-striped table-hover">
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="font-weight-bold">ID usługi</th>
+                        <th>Nazwa usługi</th>
+                        <th>ID sprawy</th>
+                        <th>Data</th>
+                        <th>Cena</th>
+                        <th>Koszt zewnętrzny</th>
+                        <th class="font-weight-bold">#</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="service: ${listOfItems}">
+                        <td th:text="${service.id}"></td>
+                        <td th:text="${service.i_name}"></td>
+                        <td th:text="${service.i_case_id}"></td>
+                        <td th:text="${service.i_date}"></td>
+                        <td th:text="${service.i_price}"></td>
+                        <td th:text="${service.inner_price}"></td>
+                        <td><a href="#" th:href="@{|edit_item/${service.id}|}">Modyfikuj</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div><!--/ CONTENT - RIGHT PANEL -->
 
     </div>
 </div>
 
+
+
 <div lang="en" th:replace="layout/footer :: footer"> </div>
 
 <script>
     function search(column) {
-        var input, input2, filter, table, tr, td, i;
+        var input, input2,input3, filter, table, tr, td, i;
         input = document.getElementById("searchInput");
         input2 = document.getElementById("searchInput2");
+        input3 = document.getElementById("searchInput3");
 
-        filter = input.value.toUpperCase() || input2.value.toUpperCase();
+        filter = input.value.toUpperCase() || input2.value.toUpperCase() || input3.value.toUpperCase();
         table = document.getElementById("itemTable");
         tr = table.getElementsByTagName("tr");
         for (i = 0; i < tr.length; i++) {
@@ -90,6 +107,50 @@
         }
     }
 </script>
+<script>
+function generatePDF() {
+    var pdf = new jsPDF('p', 'pt', 'a4');
+
+    var date = new Date();
+    var minutes = ( date.getMinutes() > 10) ?  date.getMinutes() : "0"+ date.getMinutes();
+    var dataString = date.getFullYear() + "_" + date.getMonth() + "_" + date.getDate() + "_" + date.getHours() + "_"+minutes;
+    var pdfHeader = "Raport wygenerowany w dniu: "+date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()+" o godzinie: "+date.getHours()+":"+minutes;
+
+    var columns =  ["ID Uslugi", "Nazwa", "ID Sprawy", "Data", "Cena", "Koszty zewnetrzne"];
+    var rows =[];
+    var table = document.getElementById("itemTable");
+    var i;
+    for ( i = 1; i < table.rows.length; i++ ) {
+        if (table.rows[i].style.display === "") {
+            var currRow = [];
+            currRow[0] = table.rows[i].cells[0].innerHTML;
+            currRow[1] = table.rows[i].cells[1].innerHTML;
+            currRow[2] = table.rows[i].cells[2].innerHTML;
+            currRow[3] = table.rows[i].cells[3].innerHTML;
+            currRow[4] = table.rows[i].cells[4].innerHTML;
+            currRow[5] = table.rows[i].cells[5].innerHTML;
+            rows.push(currRow);
+        }
+    }
+
+    pdf.autoTable(columns, rows, {
+        theme: 'grid',
+        margin: {top: 60},
+        pageBreak: 'always', // 'auto', 'avoid' or 'always'
+        tableWidth: 'auto', // 'auto', 'wrap' or a number,
+        addPageContent: function() {
+            pdf.text(pdfHeader, 40, 30);
+        }
+    });
+
+
+    pdf.save("Raport_"+dataString);
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js" integrity="sha384-THVO/sM0mFD9h7dfSndI6TS0PgAGavwKvB5hAxRRvc0o9cPLohB0wb/PTA7LdUHs" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.4/jspdf.plugin.autotable.js"></script>
+
 
 </body>
 </html>

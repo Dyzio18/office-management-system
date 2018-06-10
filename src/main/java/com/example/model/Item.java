@@ -17,15 +17,24 @@ public class Item {
     public int id;
 
     @Column(name = "service_name")
-    @NotEmpty(message = "*Please provide name")
+    @NotEmpty(message = "*Podaj nazwę usługi")
     private String i_name;
 
+    @Column(name = "service_date")
+    @NotEmpty(message = "*Podaj date usługi")
+    private String i_date;
+
+    @Column(name="service_case_id")
+    @NotNull(message = "*Podaj wartość")
+    private int i_case_id;
+
+
     @Column(name="service_price")
-    @NotNull
+    @NotNull(message = "*Podaj wartość")
     private BigDecimal i_price;
 
     @Column(name="service_inner_price")
-    @NotNull
+    @NotNull(message = "*Podaj wartość")
     private BigDecimal inner_price;
 
     public int getId() {
@@ -58,5 +67,21 @@ public class Item {
 
     public void setInner_price(BigDecimal inner_price) {
         this.inner_price = inner_price;
+    }
+
+    public String getI_date() {
+        return i_date;
+    }
+
+    public void setI_date(String i_date) {
+        this.i_date = i_date;
+    }
+
+    public int getI_case_id() {
+        return i_case_id;
+    }
+
+    public void setI_case_id(int i_case_id) {
+        this.i_case_id = i_case_id;
     }
 }

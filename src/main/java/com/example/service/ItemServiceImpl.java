@@ -27,6 +27,8 @@ public class ItemServiceImpl implements ItemService {
     public void saveItem(Item item){
         item.setI_name(item.getI_name());
         item.setI_price(item.getI_price());
+        item.setI_case_id(item.getI_case_id());
+        item.setI_date(item.getI_date());
         item.setInner_price(item.getInner_price());
         itemRepository.save(item);
     }

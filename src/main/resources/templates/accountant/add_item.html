@@ -34,28 +34,40 @@
                       role="form">
                     <div class="form-group">
                         <div class="col-sm-9">
-                            <label th:if="${#fields.hasErrors('i_name')}" th:errors="*{i_name}"
-                                   class="validation-message"></label>
-                            <input type="text" th:field="*{i_name}" placeholder="Nazwa"
-                                   class="form-control" />
+                            <p>Nazwa usługi</p>
+                            <label th:if="${#fields.hasErrors('i_name')}" th:errors="*{i_name}"  class="validation-message"></label>
+                            <input type="text" th:field="*{i_name}" placeholder="Nazwa"    class="form-control" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
-                            <label	th:if="${#fields.hasErrors('i_price')}" th:errors="*{i_price}"
-                                      class="validation-message"></label>
-                            <input type="text" th:field="*{i_price}"
-                                   placeholder="Cena" class="form-control" />
+                            <p>Identyfikator sprawy</p>
+                            <input required type="text" th:field="*{i_case_id}"  placeholder="Identyfikator sprawy" class="form-control" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <div class="col-sm-9">
-                            <label	th:if="${#fields.hasErrors('inner_price')}" th:errors="*{inner_price}"
-                                      class="validation-message"></label>
-                            <input type="text" th:field="*{inner_price}"
-                                   placeholder="Koszt zewnętrzny" class="form-control" />
+                            <p>Nazwa usługi</p>
+                            <label th:if="${#fields.hasErrors('i_date')}" th:errors="*{i_date}"   class="validation-message"></label>
+                            <input type="date" th:field="*{i_date}" placeholder="Data usługi" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <p>Cena usługi</p>
+                            <label	th:if="${#fields.hasErrors('i_price')}" th:errors="*{i_price}"  class="validation-message"></label>
+                            <input type="text" th:field="*{i_price}"  placeholder="Cena" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-9">
+                            <p>Koszt zewnętrzny</p>
+                            <label	th:if="${#fields.hasErrors('inner_price')}" th:errors="*{inner_price}"     class="validation-message"></label>
+                            <input type="text" th:field="*{inner_price}"  placeholder="Koszt zewnętrzny" class="form-control" />
                         </div>
                     </div>
 
