@@ -1,158 +1,158 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
 
-<head>
-    <meta charset="UTF-8">
-    <title>Raport</title>
-    <link rel="stylesheet" type="text/css" media="all" href="../static/css/raport.css"/>
-    <style>
-        body {
-        font-family: sans-serif;
-        font-size: 12px;
-            }
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Raport</title>-->
+    <!--<link rel="stylesheet" type="text/css" media="all" href="../static/css/raport.css"/>-->
+    <!--<style>-->
+        <!--body {-->
+        <!--font-family: sans-serif;-->
+        <!--font-size: 12px;-->
+            <!--}-->
 
-        div.header {
-            position: running(header);
-        }
+        <!--div.header {-->
+            <!--position: running(header);-->
+        <!--}-->
 
-        div.footer {
-            display: block;
-            margin-top: 0.5cm;
-            position: running(footer);
-        }
+        <!--div.footer {-->
+            <!--display: block;-->
+            <!--margin-top: 0.5cm;-->
+            <!--position: running(footer);-->
+        <!--}-->
 
-        .logo-container {
-            text-align: right;
-        }
+        <!--.logo-container {-->
+            <!--text-align: right;-->
+        <!--}-->
 
-        .page-count {
-            text-align: right;
-        }
+        <!--.page-count {-->
+            <!--text-align: right;-->
+        <!--}-->
 
-        .logo {
-            width: 275px;
-        }
+        <!--.logo {-->
+            <!--width: 275px;-->
+        <!--}-->
 
-        h1 {
-            font-size: 18px;
-            margin-bottom: 40px;
-            margin-top: 40px;
-        }
+        <!--h1 {-->
+            <!--font-size: 18px;-->
+            <!--margin-bottom: 40px;-->
+            <!--margin-top: 40px;-->
+        <!--}-->
 
-        p {
-            font-size: 12px;
-        }
+        <!--p {-->
+            <!--font-size: 12px;-->
+        <!--}-->
 
-        .footer {
-            text-align: center;
-        }
-
-
-        .barcode {
-            font-family: sans-serif;
-            font-size: 26px;
-        }
-
-        .right {
-            text-align: right;
-        }
-
-        .left {
-            text-align: left;
-        }
-
-        .bottom {
-            vertical-align: bottom;
-        }
-
-        .address-block {
-            height: 100px;
-        }
-
-        table {
-            width: 100%;
-        }
-
-        hr {
-            background-color: #000000;
-            border: dashed #000000 0.5px;
-            height: 1px;
-        }
-
-        .page-break {
-            page-break-after: always;
-        }
-
-        .next-page {
-            page-break-before: always
-        }
-    </style>
-</head>
-
-<body>
-    <div th:fragment="header">
-        <table>
-            <tr>
-                <td><span class="barcode"><strong>Project 3.0</strong></span></td>
-                <td class="right"><img class="logo" src="logo-justice.png" alt="logo"></td>
-            </tr>
-        </table>
-    </div>
-
-    <div th:fragment="letterhead">
-        <table>
-            <tr class="address-block">
-                <td></td>
-                <td class="bottom right">
-                    <strong>Project 3.0 Corporation</strong><br>
-                    aleja Adama Mickiewicza 30<br>
-                    30-059 Kraków<br>
-                    <br>
-                    <b>Phone:</b> +48 313 420 999<br>
-                    <b>E-Mail:</b> project3@gmail.com<br>
-                </td>
-            </tr>
-            <tr class="address-block">
-                <td class="bottom">
-                    <strong>[Imie] [Nazwisko]</strong><br>
-                    [Ulica]<br>
-                    [32-600] [Miasto]<br>
-                </td>
-                <td class="bottom right" th:text="${date}">
-                    Kraków, 01 January 2018
-                </td>
-            </tr>
-        </table>
-        <hr>
-    </div>
+        <!--.footer {-->
+            <!--text-align: center;-->
+        <!--}-->
 
 
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th>Id usługi</th>
-            <th>Nazwa usługi</th>
-            <th>Cena</th>
-            <th>Koszt zewnętrzny</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="service: ${listOfItems}">
-            <td th:text="${service.id}"></td>
-            <td th:text="${service.i_name}"></td>
-            <td th:text="${service.i_price}"></td>
-            <td th:text="${service.inner_price}"></td>
-            <td><a href="#" th:href="@{|edit_item/${service.id}|}">Modyfikuj</a></td>
-        </tr>
-        </tbody>
-    </table>
+        <!--.barcode {-->
+            <!--font-family: sans-serif;-->
+            <!--font-size: 26px;-->
+        <!--}-->
 
-    <!--<div th:fragment="footer">-->
-        <!--<hr>-->
-        <!--<div class="page-count">-->
-            <!--Page <span id="pagenumber"></span> of <span id="pagecount"></span>-->
-        <!--</div>-->
+        <!--.right {-->
+            <!--text-align: right;-->
+        <!--}-->
+
+        <!--.left {-->
+            <!--text-align: left;-->
+        <!--}-->
+
+        <!--.bottom {-->
+            <!--vertical-align: bottom;-->
+        <!--}-->
+
+        <!--.address-block {-->
+            <!--height: 100px;-->
+        <!--}-->
+
+        <!--table {-->
+            <!--width: 100%;-->
+        <!--}-->
+
+        <!--hr {-->
+            <!--background-color: #000000;-->
+            <!--border: dashed #000000 0.5px;-->
+            <!--height: 1px;-->
+        <!--}-->
+
+        <!--.page-break {-->
+            <!--page-break-after: always;-->
+        <!--}-->
+
+        <!--.next-page {-->
+            <!--page-break-before: always-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+
+<!--<body>-->
+    <!--<div th:fragment="header">-->
+        <!--<table>-->
+            <!--<tr>-->
+                <!--<td><span class="barcode"><strong>Project 3.0</strong></span></td>-->
+                <!--<td class="right"><img class="logo" src="logo-justice.png" alt="logo"></td>-->
+            <!--</tr>-->
+        <!--</table>-->
     <!--</div>-->
-</body>
-</html>
+
+    <!--<div th:fragment="letterhead">-->
+        <!--<table>-->
+            <!--<tr class="address-block">-->
+                <!--<td></td>-->
+                <!--<td class="bottom right">-->
+                    <!--<strong>Project 3.0 Corporation</strong><br>-->
+                    <!--aleja Adama Mickiewicza 30<br>-->
+                    <!--30-059 Kraków<br>-->
+                    <!--<br>-->
+                    <!--<b>Phone:</b> +48 313 420 999<br>-->
+                    <!--<b>E-Mail:</b> project3@gmail.com<br>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr class="address-block">-->
+                <!--<td class="bottom">-->
+                    <!--<strong>[Imie] [Nazwisko]</strong><br>-->
+                    <!--[Ulica]<br>-->
+                    <!--[32-600] [Miasto]<br>-->
+                <!--</td>-->
+                <!--<td class="bottom right" th:text="${date}">-->
+                    <!--Kraków, 01 January 2018-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+        <!--<hr>-->
+    <!--</div>-->
+
+
+    <!--<table class="table">-->
+        <!--<thead class="thead-dark">-->
+        <!--<tr>-->
+            <!--<th>Id usługi</th>-->
+            <!--<th>Nazwa usługi</th>-->
+            <!--<th>Cena</th>-->
+            <!--<th>Koszt zewnętrzny</th>-->
+            <!--<th></th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr th:each="service: ${listOfItems}">-->
+            <!--<td th:text="${service.id}"></td>-->
+            <!--<td th:text="${service.i_name}"></td>-->
+            <!--<td th:text="${service.i_price}"></td>-->
+            <!--<td th:text="${service.inner_price}"></td>-->
+            <!--<td><a href="#" th:href="@{|edit_item/${service.id}|}">Modyfikuj</a></td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+
+    <!--&lt;!&ndash;<div th:fragment="footer">&ndash;&gt;-->
+        <!--&lt;!&ndash;<hr>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="page-count">&ndash;&gt;-->
+            <!--&lt;!&ndash;Page <span id="pagenumber"></span> of <span id="pagecount"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</body>-->
+<!--</html>-->

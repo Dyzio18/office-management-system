@@ -29,8 +29,20 @@
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
             </div>
 
+            <h4>Wyszukiwarka</h4><br>
+            <div class="row">
+                <div class="col-sm-12 col-md-3">
+                    <label for="searchInput">Nazwa usługi</label>
+                    <input class="searchInput" type="text" id="searchInput" onkeyup="search(1)" placeholder="Wyszukaj usługę" >
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <label for="searchInput2">Cena</label>
+                    <input class="searchInput" type="text" id="searchInput2" onkeyup="search(2)" placeholder="Wyszukaj po cenie" >
+                </div>
+            </div>
+
             <!--lista userow oraz form dodawanie-edytowanie-->
-            <table class="table">
+            <table id="itemTable" class="table table-striped table-hover">
                 <thead class="thead-dark">
                 <tr>
                     <th>Id usługi</th>
@@ -56,6 +68,28 @@
 </div>
 
 <div lang="en" th:replace="layout/footer :: footer"> </div>
+
+<script>
+    function search(column) {
+        var input, input2, filter, table, tr, td, i;
+        input = document.getElementById("searchInput");
+        input2 = document.getElementById("searchInput2");
+
+        filter = input.value.toUpperCase() || input2.value.toUpperCase();
+        table = document.getElementById("itemTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[column];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
 
 </body>
 </html>
