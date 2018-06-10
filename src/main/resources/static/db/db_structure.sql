@@ -78,16 +78,13 @@ INSERT INTO `role` (`role_id`, `role`) VALUES
 CREATE TABLE `service` (
   `service_id` int(11) NOT NULL,
   `service_name` varchar(255) NOT NULL,
+  `service_date` varchar(32) NOT NULL,
+  `service_case_id` int(11) NOT NULL,
   `service_price` decimal(19,2) NOT NULL,
   `service_inner_price` decimal(19,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `service`
---
 
-INSERT INTO `service` (`service_id`, `service_name`, `service_price`, `service_inner_price`) VALUES
-(1, 'Konsultacja', 150.50, 45.12);
 
 -- --------------------------------------------------------
 
@@ -145,8 +142,10 @@ CREATE TABLE `client` (
   `client_surname` varchar(255) NOT NULL,
   `client_phone` varchar(255) NOT NULL,
   PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO `client` (`client_id`, `client_name`, `client_surname`, `client_phone`) VALUES (NULL, 'Adam', 'Kowalski', '788996411'), (NULL, 'Beata', 'Tyszkiewicz', '964789125'), (NULL, 'Stefan', 'Kowalski', '789444566'), (NULL, 'Mirosław', 'Nowak', '655455155');
 
 --
 -- Indexes for table `case`
@@ -200,3 +199,14 @@ ALTER TABLE `user`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+INSERT INTO `service` (`service_id`, `service_name`, `service_date`, `service_case_id`, `service_price`, `service_inner_price`) VALUES
+(null, 'Konsultacje', '2018-06-08', 1, '150.00', '20.00'),
+(null, 'Konsultacje', '2018-06-15', 2, '290.00', '0.00'),
+(null, 'Przygotowanie dokumentacji', '2018-06-15', 2, '190.00', '20.00'),
+(null, 'Porada prawna', '2018-05-20', 1, '80.00', '0.00'),
+(null, 'Porada prawna', '2018-05-22', 1, '80.00', '0.00'),
+(null, 'Porada prawna', '2018-05-28', 1, '160.00', '0.00'),
+(null, 'Szkolenie z RODO', '2018-05-28', 2, '450.00', '50.00');
