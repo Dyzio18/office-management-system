@@ -17,7 +17,6 @@
                 <a href="/accountant/home" class="list-group-item list-group-item-action active">Panel</a>
                 <a href="/accountant/list_items" class="list-group-item list-group-item-action">Usługi</a>
                 <a href="/accountant/add_item" class="list-group-item list-group-item-action">Dodaj usługę</a>
-                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
             </div>
 
             <div class="aside__currentUser">
@@ -30,9 +29,17 @@
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> ACCOUNTANT PANEL</h1>
-            <div class="panel-group" style="margin-top:40px">
-                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            <h1> PANEL KSIĘGOWEJ</h1>
+
+            <div class="card text-center border-light mt-3 mb-3">
+                <div class="card-header">
+                    Powiadomienia
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Witaj  <b th:utext="${userName}"></b> !</h4>
+                    <p class="card-text lead"> W panelu tym możesz dodawać, modyfikować usługi oraz generować raporty PDF wybranych spraw</p>
+                    <a href="/accountant/add_item" class="btn btn-primary">Dodaj usługę</a>
+                </div>
             </div>
         </div><!--/ CONTENT - RIGHT PANEL -->
 

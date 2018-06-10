@@ -1,0 +1,126 @@
+
+<div lang="en" th:replace="layout/header"> </div>
+<style>
+    .min-width-130{
+        min-width: 130px;
+    }
+    /* SEARCH */
+    .searchInput {
+        background-image: url('https://www.w3schools.com/css/searchicon.png '); /* https://www.w3schools.com/css/searchicon.png */
+        background-position: 10px 12px;
+        background-repeat: no-repeat;
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 12px;
+        margin-top: 6px;
+    }
+</style>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/lawyer/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel adwokata</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/lawyer/home" class="list-group-item list-group-item-action">Panel</a>
+                <a href="/lawyer/cases" class="list-group-item list-group-item-action active">Wszystkie sprawy</a>
+                <a href="/lawyer/calendar" class="list-group-item list-group-item-action">Kalendarz</a>
+                <!--<a href="#" class="list-group-item list-group-item-action">Klienci</a>-->
+            </div>
+
+            <div class="aside__currentUser">
+
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+            <h1> Lista spraw</h1>
+            <div class="panel-group" style="margin-top:40px">
+                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            </div>
+
+            <h4>Wyszukiwarka</h4><br>
+            <div class="row">
+                <div class="col-sm-12 col-md-3">
+                    <label for="searchInput">Nazwisko</label>
+                    <input class="searchInput" type="text" id="searchInput" onkeyup="search(2)" placeholder="Wyszukaj nazwisko" >
+                </div>
+                <div class="col-sm-12 col-md-3">
+                    <label for="searchInput2">Data</label>
+                    <input class="searchInput" type="text" id="searchInput2" onkeyup="search(3)" placeholder="Wyszukaj datę" >
+                </div>
+            </div>
+
+            <!-- FORM -->
+            <table id="caseTable" class="table table-striped table-hover">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col" style="width: inherit">Numer sprawy</th>
+                    <th scope="col">Imię</th>
+                    <th scope="col">Nazwisko</th>
+                    <th class="min-width-130"  scope="col">Data</th>
+                    <th class="min-width-130"  scope="col">Godzina</th>
+                    <!--<th scope="col">Prowadzący</th>-->
+                    <th scope="col">Opis sprawy</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr scope="row" th:each="case: ${listOfCases}" >
+                    <td th:text="${case.getCaseId()}"></td>
+                    <td th:text="${case.getClientName()}"></td>
+                    <td th:text="${case.getClientSurname()}"></td>
+                    <td class="min-width-130" th:text="${case.getCaseDate()}"></td>
+                    <td class="min-width-130" th:text="${case.getCaseTime()}"></td>
+                    <!--<td th:text="${case.getLawyerId()}"></td>-->
+                    <td th:text="${case.getCaseNote()}"></td>
+                    <td><a class="btn btn-primary" th:href="@{|case_view/${case.id}|}">Szczegóły</a></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+    </div>
+</div>
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+<script>
+    function search(column) {
+        var input, input2, filter, table, tr, td, i;
+        input = document.getElementById("searchInput");
+        input2 = document.getElementById("searchInput2");
+
+        filter = input.value.toUpperCase() || input2.value.toUpperCase();
+        table = document.getElementById("caseTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[column];
+            if (td) {
+                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

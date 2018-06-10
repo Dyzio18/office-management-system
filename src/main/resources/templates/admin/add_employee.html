@@ -21,11 +21,18 @@
                 <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
             </div>
 
+            <div class="aside__currentUser">
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+
         </div><!--/ ASIDE - LEFT PANEL -->
 
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> PANEL ADNIMISTRATORA</h1>
+            <h1> PANEL ADMINISTRATORA</h1>
             <div class="panel-group" style="margin-top:40px">
                 <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
             </div>

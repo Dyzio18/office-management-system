@@ -1,11 +1,10 @@
 /* CONTENT - user panel */
 .content{
-    height: 100%;
+    min-height: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
 }
 .aside{
-    height: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
     background: #efefef;
@@ -13,8 +12,7 @@
     flex-direction: column;
 }
 .aside__currentUser{
-    position: relative;
-    top: 230px;
+    margin-top: 30px;
 }
 .aside > .list-group-flush > .list-group-item-action:hover {
     background: #E0E0E0 !important;
@@ -65,3 +63,13 @@
     margin-top: 12px;
 }
 
+
+/* CALENDAR */
+.calendar-header {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.calendar-header .btn-group:first-of-type {
+    margin-right: 10px;
+}

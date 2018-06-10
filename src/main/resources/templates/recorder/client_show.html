@@ -1,0 +1,63 @@
+
+<div lang="en" th:replace="layout/header"> </div>
+
+<div class="container-fluid " >
+    <div class="row">
+
+        <!-- ASIDE - LEFT PANEL -->
+        <div class="col-sm-12 col-md-3 col-lg-3 aside">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/recorder/home">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Panel rejestratora</li>
+                </ol>
+            </nav>
+
+            <div class="list-group-flush">
+                <a href="/recorder/home" class="list-group-item list-group-item-action ">Panel</a>
+                <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
+                <a href="/recorder/clients" class="list-group-item list-group-item-action active">Klienci</a>
+                <a href="/recorder/client_new" class="list-group-item list-group-item-action">Dodaj klienta</a>
+                <a href="/recorder/cases" class="list-group-item list-group-item-action">Sprawy</a>
+            </div>
+
+            <div class="aside__currentUser">
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+        </div><!--/ ASIDE - LEFT PANEL -->
+
+        <!-- CONTENT - RIGHT PANEL -->
+        <div class="col-sm-12 col-md-9 col-lg-9 content">
+
+            <div class="card">
+                <h5 class="card-header">Karta klienta</h5>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h5 th:text="${client.c_name}" align="center" style="color: #007bff; display:inline-block;">Name</h5>
+                        <h5 th:text="${client.c_surname}" align="center" style="color: #007bff; display:inline-block;">Name</h5>
+                    </div>
+                    <div class="card-text">
+                        <p> Numer telefonu:  <span th:text="${client.c_phone}" > *** </span> </p>
+                        <p> Identyfikator:  <span th:text="${client.id}" > *** </span> </p>
+                    </div>
+                    <a href="#" th:href="@{|/recorder/client_show/${client.id}/add_case|}" class="btn btn-primary">Dodaj sprawe</a>
+                </div>
+            </div>
+
+
+        </div><!--/ CONTENT - RIGHT PANEL -->
+
+
+
+    </div>
+</div>
+
+
+
+<div lang="en" th:replace="layout/footer :: footer"> </div>
+
+</body>
+</html>

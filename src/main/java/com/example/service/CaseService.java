@@ -8,5 +8,5 @@ import java.util.List;
 public interface CaseService {
     List<Case> getAll();
     void saveCase(Case myCase);
-    Case findById(Integer case_id);
+    Case findById(Long case_id);
 }

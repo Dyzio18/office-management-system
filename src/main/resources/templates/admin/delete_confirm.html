@@ -14,11 +14,18 @@
 
             <div class="list-group-flush">
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
-                <a href="/admin/add_employee" class="list-group-item list-group-item-action active">Dodaj pracownika</a>
-                <a href="/admin/all_users" class="list-group-item list-group-item-action">Lista pracowników</a>
+                <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
+                <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
                 <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
                 <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
                 <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
+            </div>
+
+            <div class="aside__currentUser">
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
             </div>
 
         </div><!--/ ASIDE - LEFT PANEL -->

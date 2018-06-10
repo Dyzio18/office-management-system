@@ -28,6 +28,9 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User authUser = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", authUser.getName() + " " + authUser.getLastName());
         modelAndView.setViewName("/admin/add_employee");
         return modelAndView;
     }
@@ -58,16 +61,32 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         List <User> listOfUsers = userService.getAll();
         modelAndView.addObject("listOfUser", listOfUsers);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User authUser = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", authUser.getName() + " " + authUser.getLastName());
         modelAndView.setViewName("/admin/all_users");
         return modelAndView;
     }
 
-    @RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/employee_view/{id}", method = RequestMethod.GET)
+    public ModelAndView employee_view(@PathVariable Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.findById(id));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User authUser = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", authUser.getName() + " " + authUser.getLastName());
+        modelAndView.setViewName("/admin/employee_view");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/employee_view/edit/{id}", method = RequestMethod.GET)
     public ModelAndView update(@PathVariable Integer id){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.findById(id));
-
-        modelAndView.setViewName("/edit");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User authUser = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", authUser.getName() + " " + authUser.getLastName());
+        modelAndView.setViewName("admin/edit");
         return modelAndView;
     }
 
@@ -77,11 +96,14 @@ public class AdminController {
         return new ModelAndView("redirect:/admin/all_users");
     }
 
-    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/employee_view/delete/{id}", method = RequestMethod.GET)
     public ModelAndView delete_confirm(@PathVariable Integer id){
         ModelAndView modelAndView = new ModelAndView();
         User userFound = userService.findById(id);
         userFound.getEmail();//czy na pewno email??
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User authUser = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", authUser.getName() + " " + authUser.getLastName());
         modelAndView.setViewName("/admin/delete_confirm");
         return modelAndView;
     }
