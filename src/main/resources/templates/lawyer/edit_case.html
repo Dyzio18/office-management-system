@@ -86,7 +86,7 @@ TO JEST DO ZMIANY! (FORMULARZ)
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <textarea th:field="*{caseNote}" placeholder="Notatka" class="form-control" th:classappend="${#fields.hasErrors('caseNote')} ? is-invalid : ''" />
+                        <textarea th:field="*{caseNote}" placeholder="Notatka" class="form-control" th:classappend="${#fields.hasErrors('caseNote')} ? is-invalid : ''"></textarea>
                         <div th:if="${#fields.hasErrors('caseNote')}" th:errors="*{caseNote}" class="invalid-feedback"></div>
                     </div>
                 </div>
