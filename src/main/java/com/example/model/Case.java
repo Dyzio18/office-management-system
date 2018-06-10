@@ -57,10 +57,6 @@ public class Case {
     @NotEmpty(message = "*Podaj opis sprawy")
     public String caseNote;
 
-    @Column(name="`case_price`")
-    @NotNull(message = "*Podaj cenę")
-    public BigDecimal casePrice;
-
     public Long getCaseId() {
         return id;
     }
@@ -123,14 +119,6 @@ public class Case {
 
     public void setCaseNote(String caseNote) {
         this.caseNote = caseNote;
-    }
-
-    public BigDecimal getCasePrice() {
-        return casePrice;
-    }
-
-    public void setCasePrice(BigDecimal casePrice) {
-        this.casePrice = casePrice;
     }
 
     public static Comparator<Case> getComparator() {

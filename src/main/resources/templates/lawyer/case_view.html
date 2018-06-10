@@ -16,7 +16,7 @@
             <div class="list-group-flush">
                 <a href="/lawyer/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/lawyer/cases" class="list-group-item list-group-item-action">Wszystkie sprawy</a>
-                <a href="#" class="list-group-item list-group-item-action">Kalendarz</a>
+                <a href="/lawyer/calendar" class="list-group-item list-group-item-action">Kalendarz</a>
                 <!--<a href="#" class="list-group-item list-group-item-action">Klienci</a>-->
             </div>
 
@@ -30,12 +30,12 @@
         </div><!--/ ASIDE - LEFT PANEL -->
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
-            <h1> Edytuj sprawę </h1>
+            <h1> Szczegóły sprawy </h1>
 
 
          <!--FORM name,surname, data,time, type,lawyerId, note, price-->
         <div class="col-md-12 col-md-offset-3">
-            <form autocomplete="off"  th:action="@{/lawyer/edit_case}"  th:object="${case}"  method="post" class="form-horizontal" role="form">
+            <form autocomplete="off"  th:action="@{/lawyer/case_view}"  th:object="${case}"  method="post" class="form-horizontal" role="form">
 
 <!--
 TO JEST DO ZMIANY! (FORMULARZ)
@@ -88,13 +88,6 @@ TO JEST DO ZMIANY! (FORMULARZ)
                     <div class="col-sm-9">
                         <textarea th:field="*{caseNote}" placeholder="Notatka" class="form-control" th:classappend="${#fields.hasErrors('caseNote')} ? is-invalid : ''"></textarea>
                         <div th:if="${#fields.hasErrors('caseNote')}" th:errors="*{caseNote}" class="invalid-feedback"></div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <input type="number" th:field="*{casePrice}" step=".01" placeholder="Cena" class="form-control" th:classappend="${#fields.hasErrors('casePrice')} ? is-invalid : ''" />
-                        <div th:if="${#fields.hasErrors('casePrice')}" th:errors="*{casePrice}" class="invalid-feedback"></div>
                     </div>
                 </div>
 
