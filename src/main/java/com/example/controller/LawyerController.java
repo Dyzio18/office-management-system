@@ -57,7 +57,7 @@ public class LawyerController {
         User user = userService.findUserByEmail(auth.getName());
         ModelAndView view = new ModelAndView();
         Case myCase = caseService.findById(id);
-        view.addObject("case", myCase);
+        view.addObject("case", myCase);;
         view.addObject("userName", user.getName() + " " + user.getLastName());
         view.setViewName("/lawyer/case_view");
         return view;

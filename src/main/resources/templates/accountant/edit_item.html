@@ -19,6 +19,14 @@
                 <a href="/accountant/add_item" class="list-group-item list-group-item-action active">Dodaj usługę</a>
             </div>
 
+            <div class="aside__currentUser">
+
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+
         </div><!--/ ASIDE - LEFT PANEL -->
 
         <!-- CONTENT - RIGHT PANEL -->
