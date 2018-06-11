@@ -34,11 +34,17 @@
         <div class="col-sm-12 col-md-9 col-lg-9 content">
             <h1> Panel rejestratora </h1>
 
-
-
-            <div class="panel-group" style="margin-top:40px">
-                <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+            <div class="card text-center border-light mt-3 mb-3">
+                <div class="card-header">
+                    Powiadomienia
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Witaj  <b th:utext="${userName}"></b> !</h4>
+                    <p class="card-text lead"> W panelu tym możesz dodawać i wyszukiwać klientów kancelarii prawnej oraz umawiać ich na spotkania</p>
+                    <a href="/recorder/client_new" class="btn btn-primary">Dodaj klienta</a>
+                </div>
             </div>
+
         </div><!--/ CONTENT - RIGHT PANEL -->
 
 

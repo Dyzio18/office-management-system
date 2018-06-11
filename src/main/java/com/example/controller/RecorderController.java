@@ -109,7 +109,14 @@ public class RecorderController {
     @RequestMapping(value="/client_show/{id}/add_case", method = RequestMethod.GET)
     public ModelAndView add_ClientCase(@PathVariable Integer id){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("case", new Case());
+        Client client = clientService.findById(id);
+
+        Case newCase = new Case();
+        newCase.setClientName(client.getC_name());
+        newCase.setClientSurname(client.getC_surname());
+
+        modelAndView.addObject("client", client);
+        modelAndView.addObject("case", newCase);
         modelAndView.setViewName("/recorder/add_case");
         return modelAndView;
     }
@@ -130,9 +137,13 @@ public class RecorderController {
             modelAndView.setViewName("recorder/add_case");
         } else {
             caseService.saveCase(item);
-            modelAndView.addObject("successMessage", "Dodano nową sprawe");
-            modelAndView.addObject("item", new Case());
-            modelAndView.setViewName("recorder/add_case");
+           /* modelAndView.addObject("successMessage", "Dodano nową sprawe");
+            modelAndView.addObject("item", new Case());*/
+
+            List<Case> listOfCases = caseService.getAll();
+            modelAndView.addObject("listOfCases", listOfCases);
+            modelAndView.setViewName("/recorder/cases");
+
         }
         return modelAndView;
     }
