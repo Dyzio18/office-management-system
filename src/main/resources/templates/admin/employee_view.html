@@ -17,9 +17,6 @@
                 <a href="/admin/home" class="list-group-item list-group-item-action">Panel</a>
                 <a href="/admin/add_employee" class="list-group-item list-group-item-action">Dodaj pracownika</a>
                 <a href="/admin/all_users" class="list-group-item list-group-item-action active">Lista pracowników</a>
-                <a href="#" class="list-group-item list-group-item-action">Księgowość</a>
-                <a href="#" class="list-group-item list-group-item-action">Rejestracja</a>
-                <a href="#" class="list-group-item list-group-item-action">Ustawienia</a>
             </div>
 
             <div class="aside__currentUser">
@@ -42,24 +39,23 @@
                 <div class="row">
 
                     <div class="col-6 col-lg-12" align="center">
-                            <img th:src="@{/images/employee.png}" class="center-block img-fluid my-3 rounded-circle" width="300">
-                            <div class="name">
-                                <h3 id="first_name" th:text="${user.name}" align="center" style="color: #007bff; display:inline-block;">name</h3>
-                                <h3 id="last_name" th:text="${user.lastName}" align="center" style="color: #007bff; display:inline-block;">lastName</h3>
-                            </div>
-                            <p class="text-muted" id="role" th:text="${user.RoleId}" align="center">RoleId</p>
-                            <p id="active" th:text="${user.active}" align="center">active</p>
-                            <!--<p id="active" th:text="${user.active}" align="center"></p>-->
-                            <p id="email" th:text="${user.email}" align="center">email</p>
-                            <p id="password" align="center"></p>
-                            <p id="phoneNumber" align="center"></p>
-                            <p id="street" align="center"></p>
-                            <div class="adress">
-                                <p id="code" align="center" style="display:inline-block;"></p>
-                                <p id="city" align="center" style="display:inline-block;"></p>
-                            </div>
+                        <img th:src="@{/images/employee.png}" class="center-block img-fluid my-3 rounded-circle" width="300">
+                        <div class="name">
+                            <h3 id="first_name" th:text="${user.name}" align="center" style="color: #007bff; display:inline-block;">name</h3>
+                            <h3 id="last_name" th:text="${user.lastName}" align="center" style="color: #007bff; display:inline-block;">lastName</h3>
+                        </div>
+                        <p class="text-muted" id="role" th:text="${user.RoleId}" align="center">RoleId</p>
+                        <p id="active" th:text="${user.active}" align="center">active</p>
+                        <!--<p id="active" th:text="${user.active}" align="center"></p>-->
+                        <p id="email" th:text="${user.email}" align="center">email</p>
+                        <p id="password" align="center"></p>
+                        <p id="phoneNumber" align="center"></p>
+                        <p id="street" align="center"></p>
+                        <div class="adress">
+                            <p id="code" align="center" style="display:inline-block;"></p>
+                            <p id="city" align="center" style="display:inline-block;"></p>
+                        </div>
                         <a class="btn btn-primary" href="#" th:href="@{|edit/${user.id}|}" align="center" >Edytuj</a>
-                        <a class="btn btn-danger" href="#" th:href="@{|delete/${user.id}|}" align="center" >Usuń</a>
                     </div>
                 </div>
             </div>

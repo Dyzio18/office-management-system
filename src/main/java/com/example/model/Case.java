@@ -57,6 +57,21 @@ public class Case {
     @NotEmpty(message = "*Podaj opis sprawy")
     public String caseNote;
 
+    public static Comparator<Case> getComparator() {
+        return new Comparator<Case>(){
+            @Override
+            public int compare(Case c1, Case c2)
+            {
+                String c1Date = c1.getCaseDate();
+                String c2Date = c2.getCaseDate();
+                if (c1Date.equals(c2Date)) {
+                    return c1.getCaseTime().compareTo(c2.getCaseTime());
+                }
+                return c1Date.compareTo(c2Date);
+            }
+        };
+    }
+
     public Long getCaseId() {
         return id;
     }
@@ -119,20 +134,5 @@ public class Case {
 
     public void setCaseNote(String caseNote) {
         this.caseNote = caseNote;
-    }
-
-    public static Comparator<Case> getComparator() {
-        return new Comparator<Case>(){
-            @Override
-            public int compare(Case c1, Case c2)
-            {
-                String c1Date = c1.getCaseDate();
-                String c2Date = c2.getCaseDate();
-                if (c1Date.equals(c2Date)) {
-                    return c1.getCaseTime().compareTo(c2.getCaseTime());
-                }
-                return c1Date.compareTo(c2Date);
-            }
-        };
     }
 }
