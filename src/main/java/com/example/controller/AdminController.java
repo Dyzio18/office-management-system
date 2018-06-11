@@ -37,6 +37,8 @@ public class AdminController {
 
     @RequestMapping(value = "/add_employee", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User authUser = userService.findUserByEmail(auth.getName());
         ModelAndView modelAndView = new ModelAndView();
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
@@ -53,6 +55,7 @@ public class AdminController {
             modelAndView.setViewName("admin/add_employee");
 
         }
+        modelAndView.addObject("userName", authUser.getName() + " " + authUser.getLastName());
         return modelAndView;
     }
 
