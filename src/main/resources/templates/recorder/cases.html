@@ -40,7 +40,7 @@
 
             <div class="aside__currentUser">
 
-                <p>Zalogowany jako:	<span class="badge badge-primary"></span></p>
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
                 <form th:action="@{/logout}" method="get">
                     <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
                 </form>
