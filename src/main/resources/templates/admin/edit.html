@@ -31,6 +31,7 @@
         <!-- CONTENT - RIGHT PANEL -->
         <div class="col-sm-12 col-md-9 col-lg-9 content">
             <h1> PANEL ADMINISTRATORA </h1>
+            <h2> Edycja pracownika </h2>
 
             <ul>
                 <li>1 - ADMINISTRATOR</li>
@@ -41,13 +42,66 @@
 
             <form action="#" method="POST" th:action="@{/admin/edit/}+@{user.id}" th:object="${user}">
                 <input type="hidden" th:field="*{id}">
-                <input type="text" th:field="*{name}" placeholder="Name">
-                <input type="text" th:field="*{lastName}" placeholder="Last Name">
-                <input type="text" th:field="*{email}" placeholder="Email">
-                <!--<input type="text" th:field="*{RoleId}" placeholder="Role">-->
-                <input type="text" th:field="*{RoleId}" placeholder="Role" placeholder="RoleId">
-                <input type="hidden" th:field="*{password}" placeholder="password">
-                <input type="submit" th:field="*{name}" placeholder="Update">
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+                               class="validation-message"></label>
+                        <input type="text" th:field="*{name}" placeholder="Imię"
+                               class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                  class="validation-message"></label>
+                        <input type="text" th:field="*{lastName}"
+                               placeholder="Nazwisko" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="text" th:field="*{email}" placeholder="Email"
+                               class="form-control" /> <label
+                            th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <input type="password" th:field="*{password}"
+                               placeholder="Hasło" class="form-control" /> <label
+                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                            class="validation-message"></label>
+                    </div>
+                </div>
+                <!-- <div class="form-group">
+                     <div class="col-sm-9">
+                         <input type="text" th:field="*{RoleId}" placeholder="Rola"
+                                class="form-control" />
+                         <label  th:if="${#fields.hasErrors('RoleId')}" th:errors="*{RoleId}"
+                                 class="validation-message"></label>
+                     </div>
+                 </div> -->
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <label  th:if="${#fields.hasErrors('RoleId')}" th:errors="*{RoleId}"
+                                class="validation-message"></label>
+                        <select th:field="*{RoleId}"  class="form-control">
+                            <option value="1">Administrator</option>
+                            <option value="2">Rejestrujący</option>
+                            <option value="3">Adwokat</option>
+                            <option value="4">Księgowa</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary btn-block">Edytuj użytkownika</button>
+                    </div>
+                </div>
             </form>
         </div><!--/ CONTENT - RIGHT PANEL -->
 

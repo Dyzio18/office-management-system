@@ -19,6 +19,14 @@
                 <a href="/accountant/add_item" class="list-group-item list-group-item-action active">Dodaj usługę</a>
             </div>
 
+            <div class="aside__currentUser">
+
+                <p>Zalogowany jako:	<span class="badge badge-primary" th:utext="${userName}"></span></p>
+                <form th:action="@{/logout}" method="get">
+                    <button class="btn btn-outline-danger btn-sm" name="registration"	type="Submit">Wyloguj</button>
+                </form>
+            </div>
+
         </div><!--/ ASIDE - LEFT PANEL -->
 
         <!-- CONTENT - RIGHT PANEL -->
@@ -44,7 +52,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <p>Nazwa usługi</p>
+                        <p>Data usługi</p>
                         <label th:if="${#fields.hasErrors('i_date')}" th:errors="*{i_date}"   class="validation-message"></label>
                         <input type="date" th:field="*{i_date}" placeholder="Data usługi" class="form-control" />
                     </div>
