@@ -108,14 +108,14 @@
 <script>
     function validateForm() {
         var x = document.forms["myForm"]["name"].value;
-        var reg = /^[a-zA-Z]+$/;
+        var reg = /^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/;
         if (!reg.test(x)) {
             alert("Nieprawidłowe imię");
             return false;
         }
 
         var x2 = document.forms["myForm"]["lastName"].value;
-        var reg = /^[a-zA-Z\-]+$/;
+        var reg = /^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ\-]+$/;
         if (!reg.test(x2)) {
             alert("Nieprawidłowe nazwisko");
             return false;
