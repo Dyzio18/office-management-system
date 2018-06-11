@@ -1,5 +1,4 @@
-
-<div lang="en" th:replace="layout/header"> </div>
+<div lang="en" th:replace="layout/header" xmlns:th="http://www.w3.org/1999/xhtml"> </div>
 
 <div class="container-fluid " >
     <div class="row">
@@ -36,6 +35,10 @@
         <div class="col-md-12 col-md-offset-3">
             <form autocomplete="off"  th:action="@{/recorder/add_case}"  th:object="${case}"  method="post" class="form-horizontal" role="form">
 
+                <div class="lead mt-5 pl-2">
+                    <p>Imie: <span th:text="${case.clientName}" class="h4"></span></p>
+                    <p>Nazwisko: <span th:text="${case.clientSurname}" class="h4"></span></p>
+                </div>
 <!--
 TO JEST DO ZMIANY! (FORMULARZ)
     TODO:
@@ -45,27 +48,43 @@ TO JEST DO ZMIANY! (FORMULARZ)
     * z kontrolera wtedy wysyłać model (z już zainicjowanym id klienta)
 -->
 
+                <div class="form-group">
+                   <div class="col-sm-9">
+                       <p>Imie klienta:</p>
+                       <label th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"
+                              class="validation-message"></label>
+                       <input type="text" th:field="*{clientName}"  placeholder="Imie"
+                              class="form-control" readonly />
+                   </div>
+               </div>
+
+               <div class="form-group">
+                   <div class="col-sm-9">
+                       <p>Nazwisko klienta:</p>
+                       <label th:if="${#fields.hasErrors('clientSurname')}" th:errors="*{clientSurname}"
+                              class="validation-message"></label>
+                       <input type="text" th:field="*{clientSurname}" placeholder="Nazwisko"
+                              class="form-control" readonly />
+                   </div>
+               </div>
+
+
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <label th:if="${#fields.hasErrors('clientName')}" th:errors="*{clientName}"
-                               class="validation-message"></label>
-                        <input type="text" th:field="*{clientName}" placeholder="Nazwa"
-                               class="form-control" />
+                        <p>Rodzaj sprawy:</p>
+                        <select th:field="*{caseType}"  class="form-control">
+                            <option value="Kryminalna">Kryminalna</option>
+                            <option value="Konsultacje">Konsultacje</option>
+                            <option value="Porada prawna">Porada prawna</option>
+                            <option value="Inne">Inne</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <label th:if="${#fields.hasErrors('clientSurname')}" th:errors="*{clientSurname}"
-                               class="validation-message"></label>
-                        <input type="text" th:field="*{clientSurname}" placeholder="Nazwisko"
-                               class="form-control" />
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-sm-9">
+                        <p>Data:</p>
                         <label th:if="${#fields.hasErrors('caseDate')}" th:errors="*{caseDate}"
                                class="validation-message"></label>
                         <input type="date" th:field="*{caseDate}" placeholder="Data"
@@ -75,6 +94,7 @@ TO JEST DO ZMIANY! (FORMULARZ)
 
                 <div class="form-group">
                     <div class="col-sm-9">
+                        <p>Godzina:</p>
                         <label th:if="${#fields.hasErrors('caseTime')}" th:errors="*{caseTime}"
                                class="validation-message"></label>
                         <input type="time" th:field="*{caseTime}" placeholder="Czas"
@@ -84,25 +104,22 @@ TO JEST DO ZMIANY! (FORMULARZ)
 
                 <div class="form-group">
                     <div class="col-sm-9">
-                        <input type="number" th:field="*{lawyerId}" placeholder="Prawnik"
+                        <p>Identyfikator adwokata:</p>
+                        <input required type="number" th:field="*{lawyerId}" placeholder="Prawnik"
                                class="form-control" />
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-9">
+                        <p>Notatka:</p>
                         <textarea th:field="*{caseNote}" placeholder="Notatka"
                                class="form-control" > </textarea>
 
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div class="col-sm-9">
-                        <input type="number" th:field="*{casePrice}"
-                               placeholder="Cena" class="form-control" />
-                    </div>
-                </div>
+
 
                 <div class="form-group">
                     <div class="col-sm-9">
