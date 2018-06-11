@@ -161,7 +161,7 @@ INSERT INTO `user` (`user_id`, `active`, `email`, `last_name`, `name`, `password
 (3, 1, 'adwokat@gmail.com', 'Adwokat', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 3),
 (4, 1, 'ksiegowa@gmail.com', 'Ksiegowa', 'Pani', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 4),
 (5, 1, 'adwokat2@gmail.com', 'Adwokat2', 'Pan', '$2a$10$TNilSEl6ePjGf1K9a5q4NuNB.vkaPzcP/XBRY.zwrnfNPMfF9KxAK', 3),
-(17, 0, 'test@gmail.com', 'NazwiskoTestera1', 'ImieTestera1', '$2a$10$/W6BDeKZyjt8LCdz4gc.o.dHHsUVLhJjlIczSx4pKXUPjfP8g7Ue6', 2);
+(17, 0, 'test@gmail.com', 'Testerski', 'Tester', '$2a$10$/W6BDeKZyjt8LCdz4gc.o.dHHsUVLhJjlIczSx4pKXUPjfP8g7Ue6', 2);
 
 --
 -- Indexes for dumped tables

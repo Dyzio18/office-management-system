@@ -99,6 +99,12 @@ public class RecorderController {
     @RequestMapping(value ="/cases",method = RequestMethod.GET)
     public ModelAndView list_cases(){
         ModelAndView view = new ModelAndView();
+
+        // LOGIN
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        view.addObject("userName", user.getName() + " " + user.getLastName());
+
         List<Case> listOfCases = caseService.getAll();
         view.addObject("listOfCases", listOfCases);
         view.setViewName("/recorder/cases");
@@ -114,6 +120,11 @@ public class RecorderController {
         Case newCase = new Case();
         newCase.setClientName(client.getC_name());
         newCase.setClientSurname(client.getC_surname());
+
+        // LOGIN
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
 
         modelAndView.addObject("client", client);
         modelAndView.addObject("case", newCase);
